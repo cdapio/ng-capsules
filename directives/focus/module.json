@@ -1,0 +1,6 @@
+{
+  "name": "cask.directives.myFocus",
+  "scripts": [
+    "focus.js"
+  ]
+}

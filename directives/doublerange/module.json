@@ -1,0 +1,12 @@
+{
+  "name": "cask.directives.myDoublerange",
+  "templates": [
+    "doublerange.html"
+  ],
+  "scripts": [
+    "doublerange.js"
+  ],
+  "styles": [
+    "doublerange.less"
+  ]
+}

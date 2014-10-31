@@ -1,0 +1,6 @@
+{
+  "name": "cask.filters.myTitleFilter",
+  "scripts": [
+    "title.js"
+  ]
+}

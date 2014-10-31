@@ -1,0 +1,12 @@
+{
+  "name": "cask.directives.myThingPicker",
+  "templates": [
+    "thingpicker.html"
+  ],
+  "scripts": [
+    "thingpicker.js"
+  ],
+  "styles": [
+    "thingpicker.less"
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "name": "cask.directives.myStatusLabel",
+  "templates": [
+    "statuslable.html"
+  ],
+  "scripts": [
+    "statuslabel.js"
+  ]
+}

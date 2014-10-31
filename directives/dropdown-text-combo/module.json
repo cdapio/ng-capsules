@@ -1,0 +1,12 @@
+{
+  "name": "cask.directives.myDropdownTextCombo",
+  "templates": [
+    "dropdown-text-combo.html"
+  ],
+  "scripts": [
+    "dropdown-text-combo.js"
+  ],
+  "styles": [
+    "dropdown-text-combo.less"
+  ]
+}

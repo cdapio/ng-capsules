@@ -1,0 +1,9 @@
+{
+  "name": "cask.directives.myJsonEdit",
+  "scripts": [
+    "jsonedit.js"
+  ],
+  "styles": [
+    "jsonedit.less"
+  ]
+}

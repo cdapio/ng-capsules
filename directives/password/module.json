@@ -1,0 +1,9 @@
+{
+  "name": "cask.directives.myPassword",
+  "templates": [
+    "click2show.html"
+  ],
+  "scripts": [
+    "password.js"
+  ]
+}

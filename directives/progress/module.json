@@ -1,0 +1,9 @@
+{
+  "name": "cask.directives.myProgress",
+  "templates": [
+    "bar.html"
+  ],
+  "scripts": [
+    "progress.js"
+  ]
+}

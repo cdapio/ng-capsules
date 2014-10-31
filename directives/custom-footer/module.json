@@ -1,0 +1,12 @@
+{
+  "name": "cask.directives.myCustomFooter",
+  "templates": [
+    "custom-footer.html"
+  ],
+  "scripts": [
+    "custom-footer.js"
+  ],
+  "styles": [
+    "custom-footer.less"
+  ]
+}

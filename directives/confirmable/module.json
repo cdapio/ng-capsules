@@ -1,0 +1,7 @@
+{
+  "name": "cask.directives.myConfirmable",
+  "templates": [],
+  "scripts": [
+    "confirmable.js"
+  ]
+}

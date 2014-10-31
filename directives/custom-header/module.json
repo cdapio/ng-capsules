@@ -1,0 +1,9 @@
+{
+  "name": "cask.directives.myCustomHeader",
+  "templates": [
+    "custom-header.html"
+  ],
+  "scripts": [
+    "custom-header.js"
+  ]
+}

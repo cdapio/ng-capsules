@@ -1,0 +1,17 @@
+{
+  "name": "cask-modules",
+  "version": "0.0.1",
+  "authors": [
+    "Hodor!"
+  ],
+  "description": "This is the bower build component for hosting all cask-modules as zipped bower components",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "name": "cask.services.myFocusManager",
+  "scripts": [
+    "focus.js"
+  ]
+}
