@@ -8,13 +8,8 @@ var gulp = require('gulp'),
 
 
 gulp.task('zip', function() {
-  var directives = fs.readdirSync('./directives/')
-      services = fs.readdirSync('./services/'),
-      filters = fs.readdirSync('./filters/');
-
-  directives.forEach(lodash.curry(makeZip)("directives"));
-  services.forEach(lodash.curry(makeZip)("services"));
-  filters.forEach(lodash.curry(makeZip)("filters"));
+  var modules = fs.readdirSync('./modules/');
+  modules.forEach(lodash.curry(makeZip)('modules'));
 });
 
 function makeZip(component, item) {
