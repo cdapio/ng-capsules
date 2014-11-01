@@ -1,6 +1,0 @@
-{
-  "name": "cask.filters.myCapitalizeFilter",
-  "scripts": [
-    "capitalize.js"
-  ]
-}

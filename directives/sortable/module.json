@@ -1,9 +1,0 @@
-{
-  "name": "cask.directives.mySortable",
-  "scripts": [
-    "sortable.js"
-  ],
-  "styles": [
-    "sortable.less"
-  ]
-}

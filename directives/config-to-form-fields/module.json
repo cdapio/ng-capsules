@@ -1,9 +1,0 @@
-{
-  "name": "cask.directives.configtoformfields",
-  "templates": [
-    "config-to-form-fields.html"
-  ],
-  "scripts": [
-    "config-to-form-fields.js"
-  ]
-}
