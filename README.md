@@ -9,8 +9,8 @@
       > npm install
       > gulp zip
 
-    If any new directive/services/filters needs to be added a new folder needs to
-    be created under it and all required files should be added under it.
+  If any new directive/services/filters needs to be added a new folder needs to
+  be created under it and all required files should be added under it.
 
-    A corresponding zip file will be created under "zip" folder once
-    the ```gulp zip``` command is run.
+  A corresponding zip file will be created under "zip" folder once
+  the ```gulp zip``` command is run.
