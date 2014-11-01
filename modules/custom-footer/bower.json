@@ -1,0 +1,27 @@
+{
+  "name": "custom-footer",
+  "main": [
+    "custom-footer.js",
+    "custom-footer.html",
+    "custom-footer.less"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Hodor!"
+  ],
+  "description": "A sample footer created to demo angular module. Totally removable",
+  "keywords": [
+    "footer",
+    "cask",
+    "ui-module"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

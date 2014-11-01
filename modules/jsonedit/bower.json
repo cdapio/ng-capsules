@@ -1,0 +1,26 @@
+{
+  "name": "jsonedit",
+  "main": [
+    "jsonedit.js",
+    "jsonedit.less"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Hodor!"
+  ],
+  "description": "A debug directive you through in your model here in a text area and I don't know what it does.",
+  "keywords": [
+    "jsonedit",
+    "cask",
+    "ui-module"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

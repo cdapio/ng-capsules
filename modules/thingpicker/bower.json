@@ -1,0 +1,27 @@
+{
+  "name": "thingpicker",
+  "main": [
+    "thingpicker.js",
+    "thingpicker.html",
+    "thingpicker.less"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Hodor!"
+  ],
+  "description": "Sort of drop down but allows to select multiple items",
+  "keywords": [
+    "thingpicker",
+    "cask",
+    "ui-module"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

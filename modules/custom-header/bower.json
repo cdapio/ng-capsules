@@ -1,0 +1,26 @@
+{
+  "name": "custom-header",
+  "main": [
+    "custom-header.js",
+    "custom-footer.html"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Hodor!"
+  ],
+  "description": "A sample header created to demo angular module. Totally removable",
+  "keywords": [
+    "header",
+    "cask",
+    "ui-module"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

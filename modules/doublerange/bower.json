@@ -1,0 +1,28 @@
+{
+  "name": "doublerange",
+  "main": [
+    "doublerange.js",
+    "doublerange.html",
+    "doublerange.less"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Hodor!"
+  ],
+  "description": "A min-max directive that allows you to choose min and max value chooser",
+  "keywords": [
+    "min-mav",
+    "range-picker",
+    "cask",
+    "ui-module"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

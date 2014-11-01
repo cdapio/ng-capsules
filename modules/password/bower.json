@@ -1,0 +1,26 @@
+{
+  "name": "password",
+  "main": [
+    "password.js",
+    "click2show.html"
+  ],
+  "version": "0.0.1",
+  "authors": [
+    "Hodor!"
+  ],
+  "description": "A directive to show and hide your password",
+  "keywords": [
+    "password",
+    "cask",
+    "ui-module"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
