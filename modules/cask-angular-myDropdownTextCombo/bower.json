@@ -6,15 +6,12 @@
     "dropdown-text-combo.less"
   ],
   "version": "0.0.1",
-  "authors": [
-    "Hodor!"
-  ],
   "description": "A Dropdown text combo = dropdown + [1..n]text box(es) (configurable)",
   "keywords": [
     "dropdown",
     "dropdown-text-combo",
     "cask",
-    "ui-module"
+    "angular-directive"
   ],
   "license": "MIT",
   "private": true,

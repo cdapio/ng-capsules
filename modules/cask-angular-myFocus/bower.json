@@ -5,15 +5,13 @@
     "focus-service.js"
   ],
   "version": "0.0.1",
-  "authors": [
-    "Hodor!"
-  ],
   "description": "A service + directive to focus a form element in angular",
   "keywords": [
     "focus",
     "form",
     "cask",
-    "ui-module"
+    "angular-directive",
+    "angular-service"
   ],
   "license": "MIT",
   "private": true,

@@ -4,14 +4,11 @@
     "capitalize.js"
   ],
   "version": "0.0.1",
-  "authors": [
-    "Hodor!"
-  ],
   "description": "Capitalize filter which lets you capitalize string",
   "keywords": [
     "capitalize",
     "cask",
-    "ui-module"
+    "angular-filter"
   ],
   "license": "MIT",
   "private": true,

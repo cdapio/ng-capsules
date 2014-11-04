@@ -4,14 +4,11 @@
     "progress.js"
   ],
   "version": "0.0.1",
-  "authors": [
-    "Hodor!"
-  ],
   "description": "A directive progress indicator",
   "keywords": [
     "progress-bar",
     "cask",
-    "ui-module"
+    "angular-directive"
   ],
   "license": "MIT",
   "private": true,

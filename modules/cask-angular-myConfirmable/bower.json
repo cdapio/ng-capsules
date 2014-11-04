@@ -4,16 +4,13 @@
     "confirmable.js"
   ],
   "version": "0.0.1",
-  "authors": [
-    "Hodor!"
-  ],
   "description": "Ideally a stylized window.confirm",
   "keywords": [
     "confirmable",
     "form",
     "window.confirm",
     "cask",
-    "ui-module"
+    "angular-directive"
   ],
   "license": "MIT",
   "private": true,

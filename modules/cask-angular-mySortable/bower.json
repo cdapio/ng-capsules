@@ -5,14 +5,11 @@
     "sortable.less"
   ],
   "version": "0.0.1",
-  "authors": [
-    "Hodor!"
-  ],
   "description": "A directive to sort stuff in your table",
   "keywords": [
     "password",
     "cask",
-    "ui-module"
+    "angular-directive"
   ],
   "license": "MIT",
   "private": true,
