@@ -16,7 +16,7 @@
  */
 
 angular.module('cask-angular-mySortable', [
-  'cask.filters.myCapitalizeFilter'
+  'cask-angular-myCapitalizeFilter'
 ]).directive('mySortable',
 function mySortableDirective ($log) {
 
