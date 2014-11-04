@@ -1,19 +1,19 @@
 var gulp = require('gulp'),
     gulpzip = require('gulp-zip'),
-    debug   = require("gulp-debug"),
     fs = require('fs'),
-    path = require('path'),
-    lodash = require('lodash'),
-    tap = require('gulp-tap');
+    del = require('del'),
+    path = require('path');
 
 
 gulp.task('zip', function() {
   var modules = fs.readdirSync('./modules/');
-  modules.forEach(lodash.curry(makeZip)('modules'));
+  modules.forEach(function(item) {
+    gulp.src('./modules/' + item + '/*')
+        .pipe(gulpzip(item + '.zip'))
+        .pipe(gulp.dest('./zip/modules/'));
+  });
 });
 
-function makeZip(component, item) {
-  gulp.src('./' + component + '/' + item + '/*')
-      .pipe(gulpzip(item + '.zip'))
-      .pipe(gulp.dest('./zip/' + component + '/'));
-}
+gulp.task('clean', function() {
+  del(['zip/*']);
+});
