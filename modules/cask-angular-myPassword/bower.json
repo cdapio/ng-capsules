@@ -1,5 +1,5 @@
 {
-  "name": "password",
+  "name": "cask-angular-myPassword",
   "main": [
     "password.js",
     "click2show.html"

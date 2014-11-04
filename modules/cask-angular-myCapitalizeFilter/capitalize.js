@@ -4,7 +4,7 @@
  *  unless you really only want to capitalize the first character of a sentence.
  */
 
-angular.module('cask.filters.myCapitalizeFilter', []).filter('myCapitalizeFilter',
+angular.module('cask-angular-myCapitalizeFilter', []).filter('myCapitalizeFilter',
 function myCapitalizeFilter () {
 
   return function(input) {

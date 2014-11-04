@@ -6,7 +6,7 @@
  * <my-password data-value="password"></my-password>
  */
 
-angular.module('cask.directives.myPassword', []).directive('myPassword',
+angular.module('cask-angular-myPassword', []).directive('myPassword',
 function myPasswordDirective (myFocusManager) {
   return {
     restrict: 'E',

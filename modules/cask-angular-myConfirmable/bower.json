@@ -1,5 +1,5 @@
 {
-  "name": "confirmable",
+  "name": "cask-angular-myConfirmable",
   "main": [
     "confirmable.js"
   ],

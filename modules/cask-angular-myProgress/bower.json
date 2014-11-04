@@ -1,5 +1,5 @@
 {
-  "name": "progress",
+  "name": "cask-angular-myProgress",
   "main": [
     "progress.js"
   ],

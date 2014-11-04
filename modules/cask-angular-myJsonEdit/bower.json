@@ -1,5 +1,5 @@
 {
-  "name": "jsonedit",
+  "name": "cask-angular-myJsonEdit",
   "main": [
     "jsonedit.js",
     "jsonedit.less"

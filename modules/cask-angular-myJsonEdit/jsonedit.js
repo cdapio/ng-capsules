@@ -6,7 +6,7 @@
  * <textarea my-json-edit="myObject" rows="8" class="form-control"></textarea>
  */
 
-angular.module('cask.directives.myJsonEdit', []).directive('myJsonEdit', 
+angular.module('cask-angular-myJsonEdit', []).directive('myJsonEdit', 
 function myJsonEditDirective () {
   return {
     restrict: 'A',

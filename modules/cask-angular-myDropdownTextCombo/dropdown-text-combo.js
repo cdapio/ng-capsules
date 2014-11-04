@@ -1,4 +1,4 @@
-angular.module('cask.directives.myDropdownTextCombo', [
+angular.module('cask-angular-myDropdownTextCombo', [
   'cask.filters.myCapitalizeFilter'
 ])
   .directive("myDropdownTextCombo", function myDropdownTextComboDirective() {

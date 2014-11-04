@@ -1,5 +1,5 @@
 {
-  "name": "sortable",
+  "name": "cask-angular-mySortable",
   "main": [
     "sortable.js",
     "sortable.less"

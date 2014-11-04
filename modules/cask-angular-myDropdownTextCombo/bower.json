@@ -1,5 +1,5 @@
 {
-  "name": "dropdown-text-combo",
+  "name": "cask-angular-myDropdownTextCombo",
   "main": [
     "dropdown-text-combo.js",
     "dropdown-text-combo.html",

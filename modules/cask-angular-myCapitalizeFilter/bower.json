@@ -1,5 +1,5 @@
 {
-  "name": "capitalize",
+  "name": "cask-angular-myCapitalizeFilter",
   "main": [
     "capitalize.js"
   ],

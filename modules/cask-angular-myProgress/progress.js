@@ -9,7 +9,7 @@
  *    ></my-progress>
  */
 
-angular.module('cask.directives.myProgress', []).directive('myProgress',
+angular.module('cask-angular-myProgress', []).directive('myProgress',
 function myProgressDirective () {
   return {
     restrict: 'E',
