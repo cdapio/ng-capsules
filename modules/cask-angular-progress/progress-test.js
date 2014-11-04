@@ -1,6 +1,6 @@
 /*global module, expect, inject, describe, it, before, beforeEach, after, afterEach */
 
-describe('directive myProgress', function() {
+describe('directive caskProgress', function() {
   beforeEach(module('cask-angular-progress'));
 
   var $compile, scope;
@@ -13,7 +13,7 @@ describe('directive myProgress', function() {
   describe('type=bar', function() {
 
     it('should render a progress-bar', function() {
-      var el = $compile('<my-progress type="bar" />')(scope);
+      var el = $compile('<cask-progress type="bar" />')(scope);
       scope.$digest();
 
       expect(el.hasClass('progress')).toBe(true);
@@ -21,7 +21,7 @@ describe('directive myProgress', function() {
     });
 
     it('add-cls attributes decoration', function() {
-      var el = $compile('<my-progress type="bar" data-add-cls="danger" />')(scope);
+      var el = $compile('<cask-progress type="bar" data-add-cls="danger" />')(scope);
       scope.$digest();
 
       expect(el.children().hasClass('progress-bar-danger')).toBe(true);
@@ -29,7 +29,7 @@ describe('directive myProgress', function() {
 
 
     it('sets the percentage', function() {
-      var el = $compile('<my-progress type="bar" value="5" max="10" />')(scope);
+      var el = $compile('<cask-progress type="bar" value="5" max="10" />')(scope);
       scope.$digest();
 
       expect(el.children().css('width')).toBe('50%');

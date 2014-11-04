@@ -8,7 +8,7 @@
  * <a ng-click="myConfirm()" my-confirmable="doDelete(model)">delete</a>
  */
 
-angular.module('cask-angular-confirmable', []).directive('myConfirmable', 
+angular.module('cask-angular-confirmable', []).directive('caskConfirmable', 
 function myConfirmableDirective ($window, $modal) {
   return {
     restrict: 'A',

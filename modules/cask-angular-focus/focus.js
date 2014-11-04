@@ -11,7 +11,7 @@
  * myFocusManager.focus('aNameForTheField');
  */
 
-angular.module('cask-angular-focus', []).directive('myFocus',
+angular.module('cask-angular-focus', []).directive('caskFocus',
 function myFocusDirective ($timeout, myFocusManager) {
   return {
 

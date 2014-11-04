@@ -5,7 +5,7 @@
  * @return {Object}  with "focus" and "select" methods
  */
 
-angular.module('cask-angular-focus').service('myFocusManager', 
+angular.module('cask-angular-focus').service('caskFocusManager', 
 function myFocusManagerService ($rootScope, $log) {
 
   var last = null;

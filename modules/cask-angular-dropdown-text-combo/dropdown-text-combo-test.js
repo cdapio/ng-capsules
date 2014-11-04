@@ -6,7 +6,7 @@ describe("Unit tests for my-dropdown-combo-text directive", function(myApi) {
   var scope, directiveScope, element;
   beforeEach(inject(function($rootScope, $compile) {
     element = angular.element(
-      "<my-dropdown-text-combo " +
+      "<cask-dropdown-text-combo " +
             "data-model=\"model\"" +
             "data-dropdown-list=\"dropDownList\"" +
             "data-text-fields = \"textFields\"" +
