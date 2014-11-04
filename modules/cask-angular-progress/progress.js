@@ -13,7 +13,7 @@ angular.module('cask-angular-progress', []).directive('caskProgress',
 function myProgressDirective () {
   return {
     restrict: 'E',
-    templateUrl: "cask-angular-myProgress/bar.html",
+    templateUrl: "bar.html",
     replace: true,
     scope: {
       addCls: '@',
