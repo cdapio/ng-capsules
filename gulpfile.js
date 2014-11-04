@@ -5,7 +5,7 @@ var gulp = require('gulp'),
     path = require('path');
 
 
-gulp.task('zip', function() {
+gulp.task('zip', ["clean"], function () {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function(item) {
     gulp.src('./modules/' + item + '/*')
@@ -14,6 +14,6 @@ gulp.task('zip', function() {
   });
 });
 
-gulp.task('clean', function() {
-  del(['zip/*']);
+gulp.task('clean', function(cb) {
+  del(['zip/*'], cb);
 });
