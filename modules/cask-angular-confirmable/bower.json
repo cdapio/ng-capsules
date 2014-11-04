@@ -1,0 +1,24 @@
+{
+  "name": "cask-angular-confirmable",
+  "main": [
+    "confirmable.js"
+  ],
+  "version": "0.0.1",
+  "description": "Ideally a stylized window.confirm",
+  "keywords": [
+    "confirmable",
+    "form",
+    "window.confirm",
+    "cask",
+    "angular-directive"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "cask-angular-password",
+  "main": [
+    "password.js",
+    "click2show.html"
+  ],
+  "version": "0.0.1",
+  "description": "A directive to show and hide your password",
+  "keywords": [
+    "password",
+    "cask",
+    "angular-directive"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

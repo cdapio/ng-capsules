@@ -1,0 +1,25 @@
+{
+  "name": "cask-angular-focus",
+  "main": [
+    "focus.js",
+    "focus-service.js"
+  ],
+  "version": "0.0.1",
+  "description": "A service + directive to focus a form element in angular",
+  "keywords": [
+    "focus",
+    "form",
+    "cask",
+    "angular-directive",
+    "angular-service"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
