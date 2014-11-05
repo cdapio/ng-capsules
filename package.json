@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Npm module for hosting all common cask ui re-usable(angular)modules",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node ./node_modules/karma/bin/karma start karma-conf.js"
   },
   "author": "Hodor!",
   "license": "ISC",
