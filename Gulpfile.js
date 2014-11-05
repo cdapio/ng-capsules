@@ -59,5 +59,5 @@ gulp.task('test-build', ['clean'], function () {
 });
 
 gulp.task('clean', function (cb) {
-  del(['zip/*', 'test/build'], cb);
+  del(['./zip/*', './test/build'], cb);
 });

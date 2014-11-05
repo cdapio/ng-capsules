@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "common cask ui re-usable angular modules",
   "scripts": {
-    "pretest": "gulp test-build",
+    "pretest": "bower install && gulp test-build",
     "test": "node ./node_modules/karma/bin/karma start test/karma-conf.js"
   },
   "author": "Hodor!",
