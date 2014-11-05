@@ -43,11 +43,7 @@ gulp.task('clean', function(cb) {
   del(['zip/*'], cb);
 });
 
-gulp.task('build-clean', function(cb) {
-  del(['test/*'], cb);
-});
-
-gulp.task('test-build', ['build-clean'], function(cb) {
+gulp.task('test-build', function(cb) {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function(item) {
     gulp.src([
@@ -64,6 +60,6 @@ gulp.task('test-build', ['build-clean'], function(cb) {
 
 gulp.task('test', ['test-build'], function(done) {
   karma.start({
-    configFile: __dirname + '/karma-conf.js'
+    configFile: __dirname + '/test/karma-conf.js'
   }, done);
 });

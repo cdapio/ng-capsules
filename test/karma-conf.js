@@ -1,6 +1,6 @@
 module.exports = function(config) {
   var karma = {
-    basePath: './modules/',
+    basePath: '../modules/',
     files: [
       '../bower_components/angular/angular.js',
       '../bower_components/angular-mocks/angular-mocks.js',
@@ -8,7 +8,7 @@ module.exports = function(config) {
 
 
       '*/module.js',
-      '*/test/templates/**/tpl.html.js',
+      '*/test/templates/tpl.html.js',
       '*/*.js',
       '*/test/*.js'
     ],
