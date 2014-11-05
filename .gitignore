@@ -1,4 +1,4 @@
 node_modules/
 .gitignore
-build/
+test/build/
 bower_components/

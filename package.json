@@ -4,7 +4,7 @@
   "description": "common cask ui re-usable angular modules",
   "scripts": {
     "pretest": "gulp test-build",
-    "test": "node ./node_modules/karma/bin/karma start karma-conf.js"
+    "test": "node ./node_modules/karma/bin/karma start test/karma-conf.js"
   },
   "author": "Hodor!",
   "license": "ISC",
