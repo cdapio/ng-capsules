@@ -8,7 +8,7 @@ angular.module('cask-angular-dropdown-text-combo')
         textFields: "=",
         assetLabel: "@"
       },
-      templateUrl: "dropdown-text-combo.html",
+      templateUrl: "dropdown-text-combo/dropdown-text-combo.html",
       link: function ($scope) {
         $scope.dropdownValues = [];
 
