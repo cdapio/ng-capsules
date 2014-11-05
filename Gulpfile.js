@@ -2,53 +2,44 @@ var gulp = require('gulp'),
     gulpPlugin = require('gulp-load-plugins')(),
     fs = require('fs'),
     del = require('del'),
+    merge = require('merge-stream'),
     path = require('path');
 
 
 gulp.task('zip', ['clean'], function () {
   var modules = fs.readdirSync('./modules/');
+  var output = merge();
   modules.forEach(function(item) {
-    gulp.src('./modules/' + item + '/build/*')
-        .pipe(gulpPlugin.debug())
-        .pipe(gulpPlugin.zip(item + '.zip'))
-        .pipe(gulp.dest('./zip/'));
+
+    var stream = gulp.src([
+        './modules/' + item + '/**/*',
+        '!./modules/' + item + '/test/*'
+      ])
+      .pipe(
+        gulpPlugin.if('*.less', gulpPlugin.less())
+      )
+      .pipe(
+        gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
+      )
+      .pipe(
+        gulpPlugin.if('*.html', gulpPlugin.angularTemplatecache('tpl.html.js', {
+          module: item,
+          root: item + '/'
+        }))
+      )
+      .pipe(gulpPlugin.size({
+        showFiles:true,
+      }))
+      .pipe(gulpPlugin.zip(item + '.zip'))
+      .pipe(gulp.dest('./zip/'));
+
+      output = merge(output, stream);
   });
+  return output;
 });
 
 gulp.task('clean', function(cb) {
   del(['zip/*'], cb);
-});
-
-gulp.task('build-modules', ['build-clean'], function() {
-  var modules = fs.readdirSync('./modules/');
-  modules.forEach(function (item) {
-    gulp.src('./modules/' + item + '/*.html')
-        .pipe(gulpPlugin.angularTemplatecache({
-          module: item
-        }))
-        .pipe(gulpPlugin.concat(item + '.html.js'))
-        .pipe(gulp.dest('./modules/' + item + '/build/'));
-
-
-    gulp.src([
-      './modules/' + item + '/*.{css,less}'
-      ])
-      .pipe(gulpPlugin.less())
-      .pipe(gulp.dest('./modules/' + item + '/build/'));
-
-    gulp.src([
-      './modules/' + item + '/*.js'
-      ])
-        .pipe(gulpPlugin.ngAnnotate())
-        .pipe(gulp.dest('./modules/' + item + '/build/'));
-
-    gulp.src(item + '/bower.json')
-        .pipe(gulp.dest('./modules/' + item + '/build/'));
-  });
-});
-
-gulp.task('build-clean', function(cb) {
-  del('modules/**/build/*', cb);
 });
 
 gulp.task('test', ['build-modules'], function(done) {
