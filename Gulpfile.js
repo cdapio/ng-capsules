@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     fs = require('fs'),
     del = require('del'),
     merge = require('merge-stream'),
+    karma = require('karma').server,
     path = require('path');
 
 
@@ -56,11 +57,12 @@ gulp.task('test-build', ['build-clean'], function(cb) {
       module: item,
       root: item + '/'
     }))
-    .pipe(gulp.dest('./test/templates/' + item + '/'));
+    .pipe(gulp.dest('./modules/' + item + '/test/templates/' + item + '/'));
   });
+  cb();
 });
 
-gulp.task('test', ['build-modules'], function(done) {
+gulp.task('test', ['test-build'], function(done) {
   karma.start({
     configFile: __dirname + '/karma-conf.js'
   }, done);
