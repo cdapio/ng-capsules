@@ -10,7 +10,7 @@ angular.module('cask-angular-password').directive('caskPassword',
 function myPasswordDirective (caskFocusManager) {
   return {
     restrict: 'E',
-    templateUrl: 'click2show.html',
+    templateUrl: 'cask-angular-password/click2show.html',
     replace: true,
     scope: {
       value: '='

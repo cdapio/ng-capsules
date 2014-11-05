@@ -1,6 +1,7 @@
 {
   "name": "cask-angular-focus",
   "main": [
+    "module.js",
     "focus.js",
     "focus-service.js"
   ],

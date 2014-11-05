@@ -1,6 +1,7 @@
 {
   "name": "cask-angular-json-edit",
   "main": [
+    "module.js",
     "jsonedit.js",
     "jsonedit.less"
   ],

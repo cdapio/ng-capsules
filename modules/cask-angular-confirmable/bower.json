@@ -1,6 +1,7 @@
 {
   "name": "cask-angular-confirmable",
   "main": [
+    "module.js",
     "confirmable.js"
   ],
   "version": "0.0.1",

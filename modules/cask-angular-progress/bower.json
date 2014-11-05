@@ -1,7 +1,9 @@
 {
   "name": "cask-angular-progress",
   "main": [
-    "progress.js"
+    "module.js",
+    "progress.js",
+    "tpl.html.js"
   ],
   "version": "0.0.1",
   "description": "A directive progress indicator",
