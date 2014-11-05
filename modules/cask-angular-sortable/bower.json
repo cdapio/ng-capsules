@@ -3,7 +3,7 @@
   "main": [
     "module.js",
     "sortable.js",
-    "sortable.less"
+    "sortable.css"
   ],
   "version": "0.0.1",
   "description": "A directive to sort stuff in your table",

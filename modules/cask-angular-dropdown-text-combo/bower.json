@@ -4,7 +4,7 @@
     "module.js"
     "dropdown-text-combo.js",
     "tpl.html.js",
-    "dropdown-text-combo.less"
+    "dropdown-text-combo.css"
   ],
   "version": "0.0.1",
   "description": "A Dropdown text combo = dropdown + [1..n]text box(es) (configurable)",
