@@ -11,7 +11,7 @@ var gulp = require('gulp'),
     path = require('path');
 
 
-gulp.task('zip', ['clean', 'build-modules'], function () {
+gulp.task('zip', ['clean'], function () {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function(item) {
     gulp.src('./modules/' + item + '/build/*')
