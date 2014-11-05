@@ -1,6 +1,4 @@
-angular.module('cask-angular-dropdown-text-combo', [
-  'cask-angular-capitalize'
-])
+angular.module('cask-angular-dropdown-text-combo')
   .directive("caskDropdownTextCombo", function myDropdownTextComboDirective() {
     return {
       restrict: "E",
