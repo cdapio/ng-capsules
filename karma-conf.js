@@ -7,8 +7,9 @@ module.exports = function(config) {
       '../bower_components/jquery/dist/jquery.js',
 
 
-      '*/build/module.js',
-      '*/build/*.js',
+      '*/module.js',
+      '../test/templates/**/tpl.html.js',
+      '*/*.js',
       '*/test/*.js'
     ],
     autoWatch: true,

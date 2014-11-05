@@ -42,6 +42,24 @@ gulp.task('clean', function(cb) {
   del(['zip/*'], cb);
 });
 
+gulp.task('build-clean', function(cb) {
+  del(['test/*'], cb);
+});
+
+gulp.task('test-build', ['build-clean'], function(cb) {
+  var modules = fs.readdirSync('./modules/');
+  modules.forEach(function(item) {
+    gulp.src([
+      './modules/' + item + '/**/*.html'
+    ])
+    .pipe(gulpPlugin.angularTemplatecache('tpl.html.js', {
+      module: item,
+      root: item + '/'
+    }))
+    .pipe(gulp.dest('./test/templates/' + item + '/'));
+  });
+});
+
 gulp.task('test', ['build-modules'], function(done) {
   karma.start({
     configFile: __dirname + '/karma-conf.js'

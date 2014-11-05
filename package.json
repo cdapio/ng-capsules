@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Npm module for hosting all common cask ui re-usable(angular)modules",
   "scripts": {
-    "test": "node ./node_modules/karma/bin/karma start karma-conf.js"
+    "test": "gulp test-build && node ./node_modules/karma/bin/karma start karma-conf.js"
   },
   "author": "Hodor!",
   "license": "ISC",
