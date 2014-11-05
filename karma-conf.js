@@ -8,7 +8,7 @@ module.exports = function(config) {
 
 
       '*/module.js',
-      '../test/templates/**/tpl.html.js',
+      '*/test/templates/**/tpl.html.js',
       '*/*.js',
       '*/test/*.js'
     ],
