@@ -6,10 +6,16 @@ var gulp = require('gulp'),
     path = require('path');
 
 
+function tplCache(item) {
+  return gulpPlugin.angularTemplatecache('tpl.html.js', {
+    module: item,
+    root: item + '/'
+  });
+}
+
 gulp.task('zip', ['clean'], function () {
-  var modules = fs.readdirSync('./modules/');
   var output = merge();
-  modules.forEach(function(item) {
+  fs.readdirSync('./modules/').forEach(function(item) {
 
     var stream = gulp.src([
         './modules/' + item + '/**/*',
@@ -22,28 +28,36 @@ gulp.task('zip', ['clean'], function () {
         gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
       )
       .pipe(
-        gulpPlugin.if('*.html', gulpPlugin.angularTemplatecache('tpl.html.js', {
-          module: item,
-          root: item + '/'
-        }))
+        gulpPlugin.if('*.html', tplCache(item))
       )
-      .pipe(gulpPlugin.size({
-        showFiles:true,
-      }))
       .pipe(gulpPlugin.zip(item + '.zip'))
-      .pipe(gulp.dest('./zip/'));
+      .pipe(gulp.dest('./zip'));
 
       output = merge(output, stream);
   });
   return output;
 });
 
-gulp.task('clean', function(cb) {
-  del(['zip/*'], cb);
+gulp.task('test-build', ['clean'], function () {
+  var output = merge();
+  fs.readdirSync('./modules/').forEach(function(item) {
+
+    var stream = gulp.src([
+        './modules/' + item + '/**/*.{html,js}'
+      ])
+      .pipe(
+        gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
+      )
+      .pipe(
+        gulpPlugin.if('*.html', tplCache(item))
+      )
+      .pipe(gulp.dest('./test/build'));
+
+      output = merge(output, stream);
+  });
+  return output;
 });
 
-gulp.task('test', ['build-modules'], function(done) {
-  karma.start({
-    configFile: __dirname + '/karma-conf.js'
-  }, done);
+gulp.task('clean', function (cb) {
+  del(['zip/*', 'test/build'], cb);
 });
