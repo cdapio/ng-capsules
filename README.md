@@ -28,7 +28,7 @@
 
      For Example,
      ```javascript
-     angular.module("newModule", []);
+     angular.module("cask-angular-new-module", []);
      ```
 
   3. The bower.json in the module should define the ```main``` property with files that are
@@ -38,9 +38,9 @@
 
      For Example,
      ```javascript
-     angular.module("newModule").controller("somecontroller", function() {...})
+     angular.module("cask-angular-new-module").controller("somecontroller", function() {...})
      ```
-     Will fail if ```newModule``` is not defined before. So by defining the module in module.js
+     Will fail if ```cask-angular-new-module``` is not defined before. So by defining the module in module.js
      and adding it as the first file in the main we make sure during the build
      process we have module definition as the first step before adding anything
      to the module.
@@ -48,7 +48,7 @@
     So your bower.json file will look like this,
 
     ```javascript
-    "name": "newModule",
+    "name": "cask-angular-new-module",
     "version": "0.0.1",
     "main": [
       "module.js",
