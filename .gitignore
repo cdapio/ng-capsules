@@ -1,4 +1,4 @@
 node_modules/
 .gitignore
 build/
-
+bower_components/
