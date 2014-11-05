@@ -6,11 +6,11 @@
  * <my-password data-value="password"></my-password>
  */
 
-angular.module('cask-angular-password', []).directive('caskPassword',
-function myPasswordDirective (myFocusManager) {
+angular.module('cask-angular-password').directive('caskPassword',
+function myPasswordDirective (caskFocusManager) {
   return {
     restrict: 'E',
-    templateUrl: 'cask-angular-myPassword/click2show.html',
+    templateUrl: 'cask-angular-password/click2show.html',
     replace: true,
     scope: {
       value: '='

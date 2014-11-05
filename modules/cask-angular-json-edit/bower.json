@@ -1,8 +1,9 @@
 {
   "name": "cask-angular-json-edit",
   "main": [
+    "module.js",
     "jsonedit.js",
-    "jsonedit.less"
+    "jsonedit.css"
   ],
   "version": "0.0.1",
   "description": "A debug directive you through in your model here in a text area and I don't know what it does.",
@@ -19,5 +20,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "1.x"
+  }
 }

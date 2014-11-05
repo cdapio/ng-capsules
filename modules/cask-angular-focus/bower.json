@@ -1,6 +1,7 @@
 {
   "name": "cask-angular-focus",
   "main": [
+    "module.js",
     "focus.js",
     "focus-service.js"
   ],
@@ -21,5 +22,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "1.x"
+  }
 }

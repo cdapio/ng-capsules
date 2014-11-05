@@ -1,8 +1,9 @@
 {
   "name": "cask-angular-password",
   "main": [
+    "module.js",
     "password.js",
-    "click2show.html"
+    "tpl.html.js"
   ],
   "version": "0.0.1",
   "description": "A directive to show and hide your password",
@@ -11,6 +12,9 @@
     "cask",
     "angular-directive"
   ],
+  "dependencies": {
+    "cask-angular-focus": "../cask-angular-focus/"
+  },
   "license": "MIT",
   "private": true,
   "ignore": [
@@ -19,5 +23,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "1.x"
+  }
 }

@@ -4,8 +4,8 @@
  *  unless you really only want to capitalize the first character of a sentence.
  */
 
-angular.module('cask-angular-capitalize', []).filter('caskCapitalizeFilter',
-function myCapitalizeFilter () {
+angular.module('cask-angular-capitalize').filter('caskCapitalizeFilter',
+function caskCapitalizeFilter () {
 
   return function(input) {
     input = input ? input.toLowerCase() : '';

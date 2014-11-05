@@ -1,6 +1,7 @@
 {
   "name": "cask-angular-capitalize",
   "main": [
+    "module.js",
     "capitalize.js"
   ],
   "version": "0.0.1",
@@ -18,5 +19,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "1.x"
+  }
 }

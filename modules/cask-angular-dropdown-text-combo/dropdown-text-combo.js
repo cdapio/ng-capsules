@@ -1,6 +1,4 @@
-angular.module('cask-angular-dropdown-text-combo', [
-  'cask-angular-capitalize'
-])
+angular.module('cask-angular-dropdown-text-combo')
   .directive("caskDropdownTextCombo", function myDropdownTextComboDirective() {
     return {
       restrict: "E",
@@ -10,7 +8,7 @@ angular.module('cask-angular-dropdown-text-combo', [
         textFields: "=",
         assetLabel: "@"
       },
-      templateUrl: "cask-angular-myDropdownTextCombo/dropdown-text-combo.html",
+      templateUrl: "cask-angular-dropdown-text-combo/dropdown-text-combo.html",
       link: function ($scope) {
         $scope.dropdownValues = [];
 

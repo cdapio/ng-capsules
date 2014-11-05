@@ -1,9 +1,10 @@
 {
   "name": "cask-angular-dropdown-text-combo",
   "main": [
+    "module.js"
     "dropdown-text-combo.js",
-    "dropdown-text-combo.html",
-    "dropdown-text-combo.less"
+    "tpl.html.js",
+    "dropdown-text-combo.css"
   ],
   "version": "0.0.1",
   "description": "A Dropdown text combo = dropdown + [1..n]text box(es) (configurable)",
@@ -21,5 +22,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "1.x"
+  }
 }

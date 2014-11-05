@@ -9,11 +9,11 @@
  *    ></my-progress>
  */
 
-angular.module('cask-angular-progress', []).directive('caskProgress',
+angular.module('cask-angular-progress').directive('caskProgress',
 function myProgressDirective () {
   return {
     restrict: 'E',
-    templateUrl: "cask-angular-myProgress/bar.html",
+    templateUrl: "cask-angular-progress/bar.html",
     replace: true,
     scope: {
       addCls: '@',
