@@ -5,7 +5,7 @@
  */
 
 angular.module('cask-angular-capitalize').filter('caskCapitalizeFilter',
-function myCapitalizeFilter () {
+function caskCapitalizeFilter () {
 
   return function(input) {
     input = input ? input.toLowerCase() : '';

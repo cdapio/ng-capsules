@@ -11,6 +11,9 @@
     "cask",
     "angular-directive"
   ],
+  "dependencies": {
+    "cask-angular-focus": "../cask-angular-focus/"
+  },
   "license": "MIT",
   "private": true,
   "ignore": [

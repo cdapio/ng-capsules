@@ -12,7 +12,7 @@ describe("Unit tests for my-dropdown-combo-text directive", function(myApi) {
             "data-text-fields = \"textFields\"" +
             "data-asset-label=\"Provider\"" +
             "> "+
-        "</my-dropdown-text-combo>");
+        "</cask-dropdown-text-combo>");
     scope = $rootScope.$new();
     scope.model = {
       "something": {
@@ -39,7 +39,6 @@ describe("Unit tests for my-dropdown-combo-text directive", function(myApi) {
         name: "field3",
         value: "asadsa"
       }];
-
 
     $compile(element)(scope);
     scope.$digest();

@@ -1,1 +1,3 @@
-angular.module('cask-angular-dropdown-text-combo', []);
+angular.module('cask-angular-dropdown-text-combo', [
+  'cask-angular-capitalize'
+]);
