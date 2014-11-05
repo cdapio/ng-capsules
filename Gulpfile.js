@@ -7,10 +7,16 @@ var gulp = require('gulp'),
     path = require('path');
 
 
+function tplCache(item) {
+  return gulpPlugin.angularTemplatecache('tpl.html.js', {
+    module: item,
+    root: item + '/'
+  });
+}
+
 gulp.task('zip', ['clean'], function () {
-  var modules = fs.readdirSync('./modules/');
   var output = merge();
-  modules.forEach(function(item) {
+  fs.readdirSync('./modules/').forEach(function(item) {
 
     var stream = gulp.src([
         './modules/' + item + '/**/*',
@@ -23,14 +29,8 @@ gulp.task('zip', ['clean'], function () {
         gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
       )
       .pipe(
-        gulpPlugin.if('*.html', gulpPlugin.angularTemplatecache('tpl.html.js', {
-          module: item,
-          root: item + '/'
-        }))
+        gulpPlugin.if('*.html', tplCache(item))
       )
-      .pipe(gulpPlugin.size({
-        showFiles:true,
-      }))
       .pipe(gulpPlugin.zip(item + '.zip'))
       .pipe(gulp.dest('./zip/'));
 

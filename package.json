@@ -1,8 +1,9 @@
 {
   "name": "cask-modules",
   "version": "0.0.1",
-  "description": "Npm module for hosting all common cask ui re-usable(angular)modules",
+  "description": "common cask ui re-usable angular modules",
   "scripts": {
+    "pretest": "bower install",
     "test": "gulp test"
   },
   "author": "Hodor!",
