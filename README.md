@@ -20,23 +20,27 @@
   To develop/add a new component to the repo the following are assumed for the build
   process.
 
-  1. The module should have module.js which "defines" the angular module
+  1. The folder name for your module, your module name and bower component name should
+     be the same. It should be of the format ```cask-angular-<name>```. This is to help
+     during the build process of the module while being used as a bower dependency in an app(say CDAP).
+
+  2. The module should have module.js file which "defines" the angular module
 
      For Example,
      ```javascript
      angular.module("newModule", []);
      ```
 
-  2. The bower.json in the module should define the ```main``` property with files that are
+  3. The bower.json in the module should define the ```main``` property with files that are
      important to the module. The first file in the array should be module.js.
      This is necessary for the build process as angular expects the module to defined
      before adding a directive/service/filter/controller to it.
 
      For Example,
      ```javascript
-     angular.module("newModule").controller("somecontr", function() {...})
+     angular.module("newModule").controller("somecontroller", function() {...})
      ```
-     Will fail if it is not defined before. So by defining the module in module.js
+     Will fail if ```newModule``` is not defined before. So by defining the module in module.js
      and adding it as the first file in the main we make sure during the build
      process we have module definition as the first step before adding anything
      to the module.
@@ -50,9 +54,14 @@
       "module.js",
       "myDirective.js",
       ...
-    ]
+    ],
+    ...
     ```
 
-  3. Any html files under your module will be compiled and added to template cache
+  4. Any html files under your module will be compiled and added to template cache
      under the name "tpl.html.js". So if you have html files you just need to add
-     tpl.html.js to your ```main``` property in bower.json
+     ```tpl.html.js``` to your ```main``` property in bower.json
+
+  5. Any less files that you define in your module will be compiled to a css file.
+     So in your bower.json's main property you will be mentioning ```[yourstylesheet].css```
+     instead of ```[yourstylesheet].less```
