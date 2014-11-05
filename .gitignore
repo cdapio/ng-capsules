@@ -2,4 +2,4 @@ node_modules/
 .gitignore
 build/
 bower_components/
-test/templates/
+**/test/templates
