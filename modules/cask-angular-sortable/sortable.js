@@ -1,5 +1,5 @@
 /**
- * mySortable
+ * caskSortable
  * makes a <table> sortable
  *
  * adds "sortable.predicate" and "sortable.reverse" to the scope
@@ -15,8 +15,8 @@
  *    <td>...
  */
 
-angular.module('cask-angular-sortable').directive('mySortable',
-function mySortableDirective ($log) {
+angular.module('cask-angular-sortable').directive('caskSortable',
+function caskSortableDirective ($log) {
 
   return {
     restrict: 'A',
