@@ -57,7 +57,7 @@ gulp.task('test-build', ['build-clean'], function(cb) {
       module: item,
       root: item + '/'
     }))
-    .pipe(gulp.dest('./modules/' + item + '/test/templates/' + item + '/'));
+    .pipe(gulp.dest('./modules/' + item + '/test/templates/'));
   });
   cb();
 });
