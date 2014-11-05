@@ -4,7 +4,10 @@ var gulp = require('gulp'),
     del = require('del'),
     debug = require('gulp-debug'),
     templateCache = require('gulp-angular-templatecache'),
+    annotate = require('gulp-ng-annotate'),
     concat = require('gulp-concat'),
+    merge = require('gulp-merge'),
+    less = require('gulp-less'),
     path = require('path');
 
 
@@ -24,7 +27,7 @@ gulp.task('clean', function(cb) {
 gulp.task('build-modules', function() {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function (item) {
-    gulp.merge(
+    merge(
       gulp.src('./modules/' + item + '/*.html')
           .pipe(templateCache({
             module: item
@@ -45,7 +48,7 @@ gulp.task('build-modules', function() {
         ])
           .pipe(annotate())
           .pipe(concat(item + '.js'))
-          .pipe(gulp.dest('./modules/' + item + '/build/'));
+          .pipe(gulp.dest('./modules/' + item + '/build/'))
     );
   });
 });
