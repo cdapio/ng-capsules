@@ -24,35 +24,37 @@ gulp.task('clean', function(cb) {
   del(['zip/*'], cb);
 });
 
-gulp.task('build-modules', function() {
+gulp.task('build-modules', ['build-clean'], function() {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function (item) {
-    merge(
-      gulp.src('./modules/' + item + '/*.html')
-          .pipe(templateCache({
-            module: item
-          }))
-          .pipe(concat(item + '-tpl.js'))
-          .pipe(gulp.dest('./modules/' + item + '/build/'))
-      ,
-      gulp.src([
-        './modules/' + item + '/*.{css,less}'
-        ])
-        .pipe(less())
-        .pipe(concat(item + '.css'))
-        .pipe(gulp.dest('./modules/' + item + '/build/'))
-      ,
-      gulp.src([
-        './modules/' + item + '/module.js',
-        './modules/' + item + '/*.js'
-        ])
-          .pipe(annotate())
-          .pipe(concat(item + '.js'))
-          .pipe(gulp.dest('./modules/' + item + '/build/'))
-    );
+    gulp.src('./modules/' + item + '/*.html')
+        .pipe(templateCache({
+          module: item
+        }))
+        .pipe(concat(item + '.html.js'))
+        .pipe(gulp.dest('./modules/' + item + '/build/'));
+
+
+    gulp.src([
+      './modules/' + item + '/*.{css,less}'
+      ])
+      .pipe(less())
+      .pipe(gulp.dest('./modules/' + item + '/build/'));
+
+    gulp.src([
+      './modules/' + item + '/*.js'
+      ])
+        .pipe(annotate())
+        .pipe(gulp.dest('./modules/' + item + '/build/'));
+
+    gulp.src(item + '/bower.json')
+        .pipe(gulp.dest('./modules/' + item + '/build/'));
   });
 });
 
+gulp.task('build-clean', function(cb) {
+  del('modules/**/build/*', cb);
+});
 
 gulp.task('test', ['build-modules'], function(done) {
   karma.start({
