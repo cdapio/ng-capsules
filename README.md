@@ -1,4 +1,4 @@
-# Cask-Ui Components
+# Cask Angular Components
 
   This is the repo that hosts all the zip files of component that will be used common
   across CDAP and Coopr UI projects inside cask. A way to share bower components
