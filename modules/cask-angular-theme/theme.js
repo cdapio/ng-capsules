@@ -16,10 +16,11 @@ module.provider('caskTheme', function CaskThemeProvider () {
     if(angular.isArray(t) && t.length) {
       THEME_LIST = t;
     }
-  }
+  };
 
   this.$get = function ($localStorage, $rootScope, CASK_THEME_EVENT) {
-    return new (function () {
+
+    function Factory () {
 
       this.current = $localStorage.theme || THEME_LIST[0];
 
@@ -38,8 +39,9 @@ module.provider('caskTheme', function CaskThemeProvider () {
       this.getClassName = function () {
         return 'theme-' + this.current;
       };
+    }
 
-    })();
+    return new Factory();
   };
 
 });

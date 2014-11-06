@@ -1,5 +1,4 @@
+.DS_Store
 node_modules/
-.gitignore
-test/build/
 bower_components/
 **/test/templates
