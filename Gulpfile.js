@@ -58,7 +58,7 @@ gulp.task('test-build', function(cb) {
   cb();
 });
 
-gulp.task('test', ['test-build'], function(done) {
+gulp.task('test', function(done) {
   karma.start({
     configFile: __dirname + '/test/karma-conf.js'
   }, done);

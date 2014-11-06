@@ -3,12 +3,13 @@
   "version": "0.0.1",
   "description": "common cask ui re-usable angular modules",
   "scripts": {
-    "pretest": "bower install",
+    "pretest": "bower install && gulp test-build",
     "test": "gulp test"
   },
   "author": "Hodor!",
   "license": "ISC",
   "devDependencies": {
+    "bower": "^1.3.12",
     "del": "^0.1.3",
     "gulp": "^3.8.9",
     "gulp-angular-templatecache": "^1.4.2",
