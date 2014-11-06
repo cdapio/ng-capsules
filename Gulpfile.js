@@ -60,7 +60,7 @@ gulp.task('test-build', function(cb) {
 });
 
 gulp.task('jshint', function() {
-  gulp.src([
+  return gulp.src([
     './modules/**/*.js'
     ])
     .pipe(jshint())
