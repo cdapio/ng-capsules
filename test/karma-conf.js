@@ -8,7 +8,7 @@ module.exports = function(config) {
 
 
       '*/module.js',
-      '*/test/templates/tpl.html.js',
+      '**/test/templates/tpl.html.js',
       '*/*.js',
       '*/test/*.js'
     ],
@@ -20,9 +20,19 @@ module.exports = function(config) {
       'karma-chrome-launcher',
       'karma-jasmine'
     ],
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
     reporters: ['progress']
   };
 
-  config.set(karma);
+  if(process.env.TRAVIS){
+    karma.browsers = ['Chrome_travis_ci'];
+    karma.singleRun =  true;
+  }
 
+  config.set(karma);
 };

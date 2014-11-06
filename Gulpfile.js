@@ -3,6 +3,7 @@ var gulp = require('gulp'),
     fs = require('fs'),
     del = require('del'),
     merge = require('merge-stream'),
+    jshint = require('gulp-jshint'),
     karma = require('karma').server,
     path = require('path');
 
@@ -58,7 +59,16 @@ gulp.task('test-build', function(cb) {
   cb();
 });
 
-gulp.task('test', ['test-build'], function(done) {
+gulp.task('jshint', function() {
+  return gulp.src([
+    './modules/**/*.js'
+    ])
+    .pipe(jshint())
+    .pipe(jshint.reporter())
+    .pipe(jshint.reporter('fail'));
+});
+
+gulp.task('test', ['jshint'], function(done) {
   karma.start({
     configFile: __dirname + '/test/karma-conf.js'
   }, done);
