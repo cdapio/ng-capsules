@@ -1,1 +1,1 @@
-angular.module('cask-angular-json-edit', [])
+angular.module('cask-angular-json-edit', []);
