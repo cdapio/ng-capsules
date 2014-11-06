@@ -1,11 +1,11 @@
 {
-  "name": "cask-angular-capitalize",
+  "name": "cask-angular-theme",
   "main": [
     "module.js",
-    "capitalize.js"
+    "theme.js"
   ],
   "version": "0.0.1",
-  "description": "Capitalize filter which lets you capitalize string",
+  "description": "A service to manage body.theme-* CSS classes",
   "keywords": [
     "cask"
   ],

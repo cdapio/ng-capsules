@@ -1,18 +1,14 @@
 {
-  "name": "cask-modules",
-  "version": "0.0.1",
-  "authors": [
-    "Hodor!"
-  ],
-  "description": "This is the bower build component for hosting all cask-modules as zipped bower components",
-  "license": "MIT",
+  "name": "ng-capsules",
+  "version": "1.0.0",
+  "description": "Hosting Cask angular modules as zipped bower components",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "test"
   ],
   "dependencies": {
     "angular-mocks": "~1.3.1",
