@@ -7,17 +7,15 @@
   "version": "0.0.1",
   "description": "A service to manage body.theme-* CSS classes",
   "keywords": [
-    "cask",
-    "angular-directive"
+    "cask"
   ],
-  "license": "Apache",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    "test"
   ],
   "dependencies": {
     "angular": "1.x"
