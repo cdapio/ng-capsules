@@ -1,1 +1,3 @@
-angular.module('cask-angular-confirmable', []);
+angular.module('cask-angular-confirmable', [
+  'mgcrea.ngStrap.modal'
+]);

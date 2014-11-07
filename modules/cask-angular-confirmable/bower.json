@@ -14,7 +14,7 @@
     "cask",
     "angular-directive"
   ],
-  "license": "MIT",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",
@@ -24,6 +24,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.x"
+    "angular": "1.x",
+    "angular-strap": "2.x"
   }
 }
