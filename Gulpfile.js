@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     merge = require('merge-stream'),
     jshint = require('gulp-jshint'),
     karma = require('karma').server,
+    argv = require('yargs').argv,
     path = require('path');
 
 
@@ -15,9 +16,15 @@ function tplCache(item) {
   });
 }
 
-gulp.task('zip', ['clean'], function () {
-  var output = merge();
-  fs.readdirSync('./modules/').forEach(function(item) {
+gulp.task('zip', function () {
+  var output = merge(),
+      inputModule = argv.module,
+      directories = fs.readdirSync('./modules/');
+
+  if (inputModule) {
+    directories = [inputModule];
+  }
+  directories.forEach(function(item) {
 
     var stream = gulp.src([
         './modules/' + item + '/**/*',
