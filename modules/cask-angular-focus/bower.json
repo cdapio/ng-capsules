@@ -5,7 +5,7 @@
     "focus.js",
     "focus-service.js"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A service + directive to focus a form element in angular",
   "keywords": [
     "focus",

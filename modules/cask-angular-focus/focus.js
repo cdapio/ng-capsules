@@ -1,13 +1,13 @@
 /**
- * myFocus
+ * caskFocus
  *
- * add the my-focus attribute to elements that you will want to trigger focus/select on
- *  then in the controller, use myFocusManager to trigger the DOM event
+ * add the cask-focus attribute to elements that you will want to trigger focus/select on
+ *  then in the controller, use caskFocusManager to trigger the DOM event
  *
  * in template:
- * <input type="text" my-focus="aNameForTheField" />
+ * <input type="text" cask-focus="aNameForTheField" />
  *
- * in controller, inject myFocusManager, then:
+ * in controller, inject caskFocusManager, then:
  * myFocusManager.focus('aNameForTheField');
  */
 
@@ -19,8 +19,7 @@ function myFocusDirective ($timeout, myFocusManager) {
 
     link: function (scope, element, attrs) {
 
-      attrs.$observe('myFocus', function (newVal) {
-        // console.log('[myFocus] watching', newVal);
+      attrs.$observe('caskFocus', function (newVal) {
 
         var cleanup = myFocusManager.is.$watch(newVal, function (o) {
           if(o) {
@@ -36,7 +35,6 @@ function myFocusDirective ($timeout, myFocusManager) {
         });
 
         scope.$on('$destroy', function() {
-          // console.log('[myFocus] cleanup', newVal);
           cleanup();
         });
       });

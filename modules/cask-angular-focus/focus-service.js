@@ -5,7 +5,7 @@
  * @return {Object}  with "focus" and "select" methods
  */
 
-angular.module('cask-angular-focus').service('caskFocusManager', 
+angular.module('cask-angular-focus').service('caskFocusManager',
 function myFocusManagerService ($rootScope, $log) {
 
   var last = null;
@@ -13,11 +13,15 @@ function myFocusManagerService ($rootScope, $log) {
   this.is = $rootScope.$new(true);
 
   function set (k, v) {
-    $log.log('[myFocusManager]', v, k);
-    this.is[last] = false;
-    this.is[k] = {};
-    this.is[k][v] = Date.now();
-    last = k;
+    var scope = this.is;
+    $timeout(function() {
+      $log.log('[caskFocusManager]', v, k);
+      scope[last] = false;
+      var o = {};
+      o[v] = Date.now();
+      scope[k] = o;
+      last = k;
+    });
   }
 
   /**
