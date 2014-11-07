@@ -1,5 +1,5 @@
 angular.module('cask-angular-dropdown-text-combo')
-  .directive("caskDropdownTextCombo", function myDropdownTextComboDirective() {
+  .directive("caskDropdownTextCombo", function caskDropdownTextComboDirective() {
     return {
       restrict: "E",
       scope: {
