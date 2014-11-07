@@ -1,6 +1,6 @@
 /**
- * myFocusManager
- * watched by the myFocus directive, this service can be called
+ * caskFocusManager
+ * watched by the caskFocus directive, this service can be called
  *  from a controller to trigger focus() events, presumably on form inputs
  * @return {Object}  with "focus" and "select" methods
  */
@@ -25,7 +25,7 @@ function caskFocusManagerService ($rootScope, $log) {
   }
 
   /**
-   * triggers focus() on element with my-focus = k
+   * triggers focus() on element with cask-focus = k
    * @param  {String} k
    */
   this.focus = function(k) {
@@ -33,7 +33,7 @@ function caskFocusManagerService ($rootScope, $log) {
   };
 
   /**
-   * triggers select() on element with my-focus = k
+   * triggers select() on element with cask-focus = k
    * @param  {String} k
    */
   this.select = function(k) {
