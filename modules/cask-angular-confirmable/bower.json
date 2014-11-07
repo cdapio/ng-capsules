@@ -2,9 +2,10 @@
   "name": "cask-angular-confirmable",
   "main": [
     "module.js",
-    "confirmable.js"
+    "confirmable.js",
+    "html.tpl.js"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ideally a stylized window.confirm",
   "keywords": [
     "confirmable",
@@ -13,7 +14,7 @@
     "cask",
     "angular-directive"
   ],
-  "license": "MIT",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",
@@ -23,6 +24,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.x"
+    "angular": "1.x",
+    "angular-strap": "2.x"
   }
 }
