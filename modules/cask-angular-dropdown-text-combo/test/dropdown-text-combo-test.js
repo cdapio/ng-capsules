@@ -1,10 +1,10 @@
 /*global module, expect, inject, describe, it, before, beforeEach, after, afterEach, $*/
 
 describe("Unit tests for cask-dropdown-combo-text directive", function() {
+  angular.module('mgcrea.ngStrap.dropdown', []);
   beforeEach(module('cask-angular-dropdown-text-combo'));
 
   var scope, directiveScope, element;
-  angular.module('mgcrea.ngStrap.dropdown', []);
   beforeEach(inject(function($rootScope, $compile) {
     element = angular.element(
       "<cask-dropdown-text-combo " +
