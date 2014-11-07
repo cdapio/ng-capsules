@@ -1,12 +1,12 @@
 /**
  * caskConfirmable
  *
- * adds a "myConfirm" method on the scope. call that, and
- *  the expression in "my-confirmable" attribute will be evaluated
+ * adds a "caskConfirm" method on the scope. call that, and
+ *  the expression in "cask-confirmable" attribute will be evaluated
  *  after the user accepts the confirmation dialog. Eg:
  *
- * <a ng-click="myConfirm()"
- *       my-confirmable="doDelete(model)"
+ * <a ng-click="caskConfirm()"
+ *       cask-confirmable="doDelete(model)"
  *       data-confirmable-title="Hold on..."
  *       data-confirmable-content="Are you absolutely sure?"
  * >delete</a>
@@ -18,7 +18,7 @@ function caskConfirmableDirective ($modal) {
     restrict: 'A',
     link: function (scope, element, attrs) {
 
-      scope.myConfirm = function () {
+      scope.caskConfirm = function () {
 
         var modal, modalScope;
 
@@ -26,12 +26,12 @@ function caskConfirmableDirective ($modal) {
 
         modalScope.doConfirm = function() {
           modal.hide();
-          scope.$eval(attrs.myConfirmable);
+          scope.$eval(attrs.caskConfirmable);
         };
 
         modal = $modal({
           scope: modalScope,
-          template: 'confirmable/confirm-modal.html',
+          template: 'cask-angular-confirmable/confirm-modal.html',
           title: attrs.confirmableTitle || 'Confirmation',
           content: attrs.confirmableContent || 'Are you sure?',
           placement: 'center',
