@@ -17,13 +17,18 @@ function tplCache(item) {
 }
 
 gulp.task('zip', function () {
-  var output = merge();
-  var inputModule = argv.module;
+  var output = merge(),
+      inputModule = argv.module,
+      directories = fs.readdirSync('./modules/');
 
   if (inputModule) {
-    gulp.src([
-      './modules/' + inputModule + '/**/*',
-      '!./modules/' + inputModule + '/test/*'
+    directories = [inputModule];
+  }
+  directories.forEach(function(item) {
+
+    var stream = gulp.src([
+        './modules/' + item + '/**/*',
+        '!./modules/' + item + '/test/*'
       ])
       .pipe(
         gulpPlugin.if('*.less', gulpPlugin.less())
@@ -32,32 +37,13 @@ gulp.task('zip', function () {
         gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
       )
       .pipe(
-        gulpPlugin.if('*.html', tplCache(inputModule))
+        gulpPlugin.if('*.html', tplCache(item))
       )
-      .pipe(gulpPlugin.zip(inputModule + '.zip'))
+      .pipe(gulpPlugin.zip(item + '.zip'))
       .pipe(gulp.dest('./zip/'));
-  } else {
-    fs.readdirSync('./modules/').forEach(function(item) {
 
-      var stream = gulp.src([
-          './modules/' + item + '/**/*',
-          '!./modules/' + item + '/test/*'
-        ])
-        .pipe(
-          gulpPlugin.if('*.less', gulpPlugin.less())
-        )
-        .pipe(
-          gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
-        )
-        .pipe(
-          gulpPlugin.if('*.html', tplCache(item))
-        )
-        .pipe(gulpPlugin.zip(item + '.zip'))
-        .pipe(gulp.dest('./zip/'));
-
-        output = merge(output, stream);
-    });
-  }
+      output = merge(output, stream);
+  });
   return output;
 });
 
