@@ -8,11 +8,11 @@
  * <input type="text" cask-focus="aNameForTheField" />
  *
  * in controller, inject caskFocusManager, then:
- * myFocusManager.focus('aNameForTheField');
+ * caskFocusManager.focus('aNameForTheField');
  */
 
 angular.module('cask-angular-focus').directive('caskFocus',
-function myFocusDirective ($timeout, myFocusManager) {
+function caskFocusDirective ($timeout, caskFocusManager) {
   return {
 
     restrict: 'A',
@@ -21,7 +21,7 @@ function myFocusDirective ($timeout, myFocusManager) {
 
       attrs.$observe('caskFocus', function (newVal) {
 
-        var cleanup = myFocusManager.is.$watch(newVal, function (o) {
+        var cleanup = caskFocusManager.is.$watch(newVal, function (o) {
           if(o) {
             $timeout(function() {
               if(o.focus) {

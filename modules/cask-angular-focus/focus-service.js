@@ -6,7 +6,7 @@
  */
 
 angular.module('cask-angular-focus').service('caskFocusManager',
-function myFocusManagerService ($rootScope, $log) {
+function caskFocusManagerService ($rootScope, $log) {
 
   var last = null;
 
