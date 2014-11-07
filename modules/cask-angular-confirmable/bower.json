@@ -2,9 +2,10 @@
   "name": "cask-angular-confirmable",
   "main": [
     "module.js",
-    "confirmable.js"
+    "confirmable.js",
+    "html.tpl.js"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Ideally a stylized window.confirm",
   "keywords": [
     "confirmable",
