@@ -5,6 +5,7 @@ var gulp = require('gulp'),
     merge = require('merge-stream'),
     jshint = require('gulp-jshint'),
     karma = require('karma').server,
+    argv = require('yargs').argv,
     path = require('path');
 
 
@@ -15,13 +16,14 @@ function tplCache(item) {
   });
 }
 
-gulp.task('zip', ['clean'], function () {
+gulp.task('zip', function () {
   var output = merge();
-  fs.readdirSync('./modules/').forEach(function(item) {
+  var inputModule = argv.module;
 
-    var stream = gulp.src([
-        './modules/' + item + '/**/*',
-        '!./modules/' + item + '/test/*'
+  if (inputModule) {
+    gulp.src([
+      './modules/' + inputModule + '/**/*',
+      '!./modules/' + inputModule + '/test/*'
       ])
       .pipe(
         gulpPlugin.if('*.less', gulpPlugin.less())
@@ -30,13 +32,32 @@ gulp.task('zip', ['clean'], function () {
         gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
       )
       .pipe(
-        gulpPlugin.if('*.html', tplCache(item))
+        gulpPlugin.if('*.html', tplCache(inputModule))
       )
-      .pipe(gulpPlugin.zip(item + '.zip'))
+      .pipe(gulpPlugin.zip(inputModule + '.zip'))
       .pipe(gulp.dest('./zip/'));
+  } else {
+    fs.readdirSync('./modules/').forEach(function(item) {
 
-      output = merge(output, stream);
-  });
+      var stream = gulp.src([
+          './modules/' + item + '/**/*',
+          '!./modules/' + item + '/test/*'
+        ])
+        .pipe(
+          gulpPlugin.if('*.less', gulpPlugin.less())
+        )
+        .pipe(
+          gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
+        )
+        .pipe(
+          gulpPlugin.if('*.html', tplCache(item))
+        )
+        .pipe(gulpPlugin.zip(item + '.zip'))
+        .pipe(gulp.dest('./zip/'));
+
+        output = merge(output, stream);
+    });
+  }
   return output;
 });
 
