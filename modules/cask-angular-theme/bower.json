@@ -1,0 +1,26 @@
+{
+  "name": "cask-angular-theme",
+  "main": [
+    "module.js",
+    "theme.js"
+  ],
+  "version": "0.0.1",
+  "description": "A service to manage body.theme-* CSS classes",
+  "keywords": [
+    "cask",
+    "angular-directive"
+  ],
+  "license": "Apache",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.x",
+    "ngstorage": ">=0.3.0"
+  }
+}
