@@ -1,27 +1,31 @@
 /**
- * myFocusManager
- * watched by the myFocus directive, this service can be called
+ * caskFocusManager
+ * watched by the caskFocus directive, this service can be called
  *  from a controller to trigger focus() events, presumably on form inputs
  * @return {Object}  with "focus" and "select" methods
  */
 
-angular.module('cask-angular-focus').service('caskFocusManager', 
-function myFocusManagerService ($rootScope, $log) {
+angular.module('cask-angular-focus').service('caskFocusManager',
+function caskFocusManagerService ($rootScope, $log) {
 
   var last = null;
 
   this.is = $rootScope.$new(true);
 
   function set (k, v) {
-    $log.log('[myFocusManager]', v, k);
-    this.is[last] = false;
-    this.is[k] = {};
-    this.is[k][v] = Date.now();
-    last = k;
+    var scope = this.is;
+    $timeout(function() {
+      $log.log('[caskFocusManager]', v, k);
+      scope[last] = false;
+      var o = {};
+      o[v] = Date.now();
+      scope[k] = o;
+      last = k;
+    });
   }
 
   /**
-   * triggers focus() on element with my-focus = k
+   * triggers focus() on element with cask-focus = k
    * @param  {String} k
    */
   this.focus = function(k) {
@@ -29,7 +33,7 @@ function myFocusManagerService ($rootScope, $log) {
   };
 
   /**
-   * triggers select() on element with my-focus = k
+   * triggers select() on element with cask-focus = k
    * @param  {String} k
    */
   this.select = function(k) {
