@@ -1,13 +1,13 @@
 /**
- * myPassword
+ * caskPassword
  *
  * implements "click2show" behavior
  *
- * <my-password data-value="password"></my-password>
+ * <cask-password data-value="password"></cask-password>
  */
 
 angular.module('cask-angular-password').directive('caskPassword',
-function myPasswordDirective (caskFocusManager) {
+function caskPasswordDirective (caskFocusManager) {
   return {
     restrict: 'E',
     templateUrl: 'cask-angular-password/click2show.html',
@@ -17,13 +17,13 @@ function myPasswordDirective (caskFocusManager) {
     },
     link: function(scope, element, attrs) {
 
-      scope.uid = ['myPassword', Date.now(), Math.random().toString().substr(2)].join('_');
+      scope.uid = ['caskPassword', Date.now(), Math.random().toString().substr(2)].join('_');
 
       scope.doToggle = function() {
         var show = !scope.show;
         scope.show = show;
         if (show) {
-          myFocusManager.select(scope.uid);
+          caskFocusManager.select(scope.uid);
         }
       };
 
