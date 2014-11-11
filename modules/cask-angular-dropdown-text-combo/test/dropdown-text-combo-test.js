@@ -1,6 +1,7 @@
 /*global module, expect, inject, describe, it, before, beforeEach, after, afterEach, $*/
 
-describe("Unit tests for my-dropdown-combo-text directive", function(myApi) {
+describe("Unit tests for cask-dropdown-combo-text directive", function() {
+  angular.module('mgcrea.ngStrap.dropdown', []);
   beforeEach(module('cask-angular-dropdown-text-combo'));
 
   var scope, directiveScope, element;
@@ -69,7 +70,7 @@ describe("Unit tests for my-dropdown-combo-text directive", function(myApi) {
 
   it("should have valid label for text field", function() {
     expect(
-      $(element).find("label[for='my-ddtc-something-0']").text()
+      $(element).find("label[for='cask-ddtc-something-0']").text()
     ).toMatch("somerandomplaceholder");
   });
 });

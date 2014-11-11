@@ -24,6 +24,7 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "1.x"
+    "angular": "1.x",
+    "angular-strap": "2.x"
   }
 }
