@@ -3,7 +3,7 @@
   "main": [
     "module.js",
     "confirmable.js",
-    "html.tpl.js"
+    "tpl.html.js"
   ],
   "version": "0.0.2",
   "description": "Ideally a stylized window.confirm",

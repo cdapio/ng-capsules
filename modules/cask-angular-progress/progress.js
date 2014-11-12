@@ -1,16 +1,16 @@
 /**
- * myProgress
+ * caskProgress
  *
- *  <my-progress
+ *  <cask-progress
  *      data-type="bar"
  *      data-add-cls="success striped"
  *      data-value="model.progress.stepscompleted"
  *      data-max="model.progress.stepstotal"
- *    ></my-progress>
+ *    ></cask-progress>
  */
 
 angular.module('cask-angular-progress').directive('caskProgress',
-function myProgressDirective () {
+function caskProgressDirective () {
   return {
     restrict: 'E',
     templateUrl: "cask-angular-progress/bar.html",
