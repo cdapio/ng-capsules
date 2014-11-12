@@ -1,7 +1,7 @@
 {
   "name": "cask-angular-dropdown-text-combo",
   "main": [
-    "module.js"
+    "module.js",
     "dropdown-text-combo.js",
     "tpl.html.js",
     "dropdown-text-combo.css"
