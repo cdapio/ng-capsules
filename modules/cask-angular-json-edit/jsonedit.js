@@ -1,9 +1,9 @@
 /**
- * myJsonEdit
+ * caskJsonEdit
  *
  * adapted from https://gist.github.com/maxbates/11002270
  *
- * <textarea my-json-edit="myObject" rows="8" class="form-control"></textarea>
+ * <textarea cask-json-edit="myObject" rows="8" class="form-control"></textarea>
  */
 
 angular.module('cask-angular-json-edit').directive('caskJsonEdit',
@@ -14,7 +14,7 @@ function myJsonEditDirective () {
     template: '<textarea ng-model="jsonEditing"></textarea>',
     replace : true,
     scope: {
-      model: '=myJsonEdit'
+      model: '=caskJsonEdit'
     },
     link: function (scope, element, attrs, ngModelCtrl) {
 
