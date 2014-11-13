@@ -13,7 +13,8 @@
     "angular-directive"
   ],
   "dependencies": {
-
+    "angular": "1.x",
+    "cask-angular-focus": "https://github.com/caskdata/ng-capsules/blob/develop/zip/cask-angular-focus.zip?raw=true"
   },
   "license": "MIT",
   "private": true,
@@ -23,9 +24,5 @@
     "bower_components",
     "test",
     "tests"
-  ],
-  "dependencies": {
-    "angular": "1.x",
-    "cask-angular-focus": "https://github.com/caskdata/ng-capsules/blob/develop/zip/cask-angular-focus.zip?raw=true"
-  }
+  ]
 }
