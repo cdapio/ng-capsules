@@ -11,19 +11,19 @@
   > To share common components - Directives, Services, Filters, Features or any other common
     javascript functionality shared between different cask front-end projects
 
-  ###Why not just use bower repo?
+  ### Why not just use bower repo?
 
   The reason we chose to have our own repo is to not have one repo per module as it is not that big and
   we need to have one repo to host all our common modules that we share between cask front-end projects. <br />
   We also didn't want to host our own private bower registry as we wanted to share these modules with the rest of the world and the github setup is pretty simple.
 
-  ###How is done?
+  ### How is done?
 
   We create bower components which can be managed using bower package manager.
   Each angular module is a standalone bower component (say dropdown-text-combo) and this can be included
   in your project through bower and angular dependency declaration.
 
-  ###How to use ng-capsules in any project?
+  ### How to use ng-capsules in any project?
 
   The following are the steps that mock the way to include any ng-capsule in your project
 
