@@ -4,10 +4,64 @@
   across CDAP and Coopr UI projects inside cask. A way to share bower components
   without registering it with bower.
 
+## Why ng-capsules?
+
+  The reason we have ng-capsules is for one main reason
+
+  > To share common components - Directives, Services, Filters, Features or any other common
+    javascript functionality shared between different cask front-end projects
+
+  ###Why not just use bower repo?
+
+  The reason we chose to have our own repo is to not have one repo per module as it is not that big and
+  we need to have one repo to host all our common modules that we share between cask front-end projects. <br />
+  We also didn't want to host our own private bower registry as we wanted to share these modules with the rest of the world and the github setup is pretty simple.
+
+  ###How is done?
+
+  We create bower components which can be managed using bower package manager.
+  Each angular module is a standalone bower component (say dropdown-text-combo) and this can be included
+  in your project through bower and angular dependency declaration.
+
+  ###How to use ng-capsules in any project?
+
+  The following are the steps that mock the way to include any ng-capsule in your project
+
+    # bower install https://github.com/caskdata/ng-capsules/blob/develop/zip/cask-angular-dropdown-text-combo.zip?raw=true --save
+
+  That is it! Now dropdown-text-combo is available under your ```bower_components/``` folder.
+  You then write your gulp/grunt task (or however you want to use/build your bower component(s)) and then include it in your built file (just like you do angular or ui-router or any other angular bower component).
+
+  You can then use it in your app by "declaring" ```cask-angular-dropdown-text-combo``` as dependency to your angular module and then use the directive directly!
+
+  ```javascript
+  angular.module('myApp', [
+    'cask-angular-dropdown-text-combo',
+    ...
+  ])
+    .config(...)
+    .directive(...)
+    .filters(...)
+    ...
+
+  // In your partial.html file
+
+  <cask-dropdown-text-combo
+      data-model="yourModel"
+      data-dropdown-list="yourModel.yourList"
+      data-text-fields="yourTextFiledData"
+      data-asset-label="YourLabel"
+  ></cask-dropdown-text-combo>
+  ```
+
+**Note**: We recommend the use of gulp or grunt and use ```main-bower-files``` npm module to give you the main files necessary for the each ng-capsule. This is because angular depends on the way script/module files are loaded, like a module has to be defined before adding anything to it. So we define this load order in ```main``` field in bower.json. So ```main-bower-files``` will give you the files that are important and in that order so it will be easier to load the module.
+<br />
+If you are not using gulp or grunt then please load the script files of any ng-capsule in the order mentioned in the ```main``` field in bower.json file.
+
 ## Set Up
 
-    > npm install
-    > gulp zip
+    # npm install
+    # gulp zip
 
   If any new directive/services/filters needs to be added, a new folder needs to
   be created under it and all the required files should be added under it.
