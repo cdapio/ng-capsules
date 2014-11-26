@@ -1,0 +1,28 @@
+{
+  "name": "cask-angular-window-manager",
+  "main": [
+    "module.js",
+    "wm.js"
+  ],
+  "version": "0.0.2",
+  "description": "events and directives to work with the browser window",
+  "keywords": [
+    "page visibility",
+    "window resize",
+    "cask",
+    "angular-directive",
+    "angular-service"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.x"
+  }
+}
