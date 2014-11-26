@@ -56,7 +56,7 @@ angular.module('cask-angular-window-manager')
           $document.on(this.pageViz[p], mkOnVizChange(p));
           break;
         } 
-      };
+      }
 
       return {
         event: CASK_WM_EVENT
