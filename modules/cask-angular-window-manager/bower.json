@@ -4,7 +4,7 @@
     "module.js",
     "wm.js"
   ],
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "events and directives to work with the browser window",
   "keywords": [
     "page visibility",
