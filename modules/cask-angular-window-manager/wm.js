@@ -33,24 +33,24 @@ angular.module('cask-angular-window-manager')
 
       // pageviz inspired by https://github.com/mz026/angular_page_visibility
       var pageViz = {
-        hidden: 'visibilitychange',
-        mozHidden: 'mozvisibilitychange',
-        msHidden: 'msvisibilitychange',
-        webkitHidden: 'webkitvisibilitychange'
-      };
+          hidden: 'visibilitychange',
+          mozHidden: 'mozvisibilitychange',
+          msHidden: 'msvisibilitychange',
+          webkitHidden: 'webkitvisibilitychange'
+        },
+        mkOnVizChange = function (q) {
+          return function (e) {
+            $log.log('[caskWindowManager]', e);
+            $rootScope.$broadcast(
+              CASK_WM_EVENT[ $document.prop(q) ? 'blur' : 'focus' ]
+            );
+          };
+        };
 
       for (var p in pageViz) {
         if (typeof ($document.prop(p)) !== 'undefined') {
-
           $log.info('[caskWindowManager] page visibility API available!');
-
-          $document.on(pageViz[p], function (e) {
-            $log.log('[caskWindowManager]', e);
-            $rootScope.$broadcast(
-              CASK_WM_EVENT[ $document.prop(p) ? 'blur' : 'focus' ]
-            );
-          });
-
+          $document.on(pageViz[p], mkOnVizChange(p));
           break;
         } 
       }
