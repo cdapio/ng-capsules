@@ -48,13 +48,15 @@ angular.module('cask-angular-window-manager')
         };
       };
 
-      for (var p in this.pageViz) { // iterate through implementations
+      var vizImp = Object.keys(this.pageViz);
+      for (var i = 0; i < vizImp.length; i++) { // iterate through implementations
+        var p = vizImp[i];
         if (typeof ($document.prop(p)) !== 'undefined') {
           $log.info('[caskWindowManager] page visibility API available!');
-          $document.on(pageViz[p], mkOnVizChange(p));
+          $document.on(this.pageViz[p], mkOnVizChange(p));
           break;
         } 
-      }
+      };
 
       return {
         event: CASK_WM_EVENT
