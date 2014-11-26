@@ -10,10 +10,17 @@ angular.module('cask-angular-window-manager')
 
     this.resizeDebounceMs = 500;
 
+    this.pageViz = {
+      hidden: 'visibilitychange',
+      mozHidden: 'mozvisibilitychange',
+      msHidden: 'msvisibilitychange',
+      webkitHidden: 'webkitvisibilitychange'
+    };
+
     this.$get = function ($rootScope, $window, $document, $log, $timeout) {
 
       // resize inspired by https://github.com/danmasta/ngResize
-      var resizeDebounceMs = this.resizeThrottleMs,
+      var resizeDebounceMs = this.resizeDebounceMs,
           resizePromise = null;
 
       angular.element($window).on('resize', function (event) {
@@ -32,22 +39,16 @@ angular.module('cask-angular-window-manager')
 
 
       // pageviz inspired by https://github.com/mz026/angular_page_visibility
-      var pageViz = {
-          hidden: 'visibilitychange',
-          mozHidden: 'mozvisibilitychange',
-          msHidden: 'msvisibilitychange',
-          webkitHidden: 'webkitvisibilitychange'
-        },
-        mkOnVizChange = function (q) {
-          return function (e) {
-            $log.log('[caskWindowManager]', e);
-            $rootScope.$broadcast(
-              CASK_WM_EVENT[ $document.prop(q) ? 'blur' : 'focus' ]
-            );
-          };
+      var mkOnVizChange = function (q) {
+        return function (e) {
+          $log.log('[caskWindowManager]', e);
+          $rootScope.$broadcast(
+            CASK_WM_EVENT[ $document.prop(q) ? 'blur' : 'focus' ]
+          );
         };
+      };
 
-      for (var p in pageViz) {
+      for (var p in this.pageViz) { // iterate through implementations
         if (typeof ($document.prop(p)) !== 'undefined') {
           $log.info('[caskWindowManager] page visibility API available!');
           $document.on(pageViz[p], mkOnVizChange(p));
