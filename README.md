@@ -17,7 +17,7 @@
   we need to have one repo to host all our common modules that we share between cask front-end projects. <br />
   We also didn't want to host our own private bower registry as we wanted to share these modules with the rest of the world and the github setup is pretty simple.
 
-#### How is done?
+#### How it is done?
 
   We create bower components which can be managed using bower package manager.
   Each angular module is a standalone bower component (say dropdown-text-combo) and this can be included
