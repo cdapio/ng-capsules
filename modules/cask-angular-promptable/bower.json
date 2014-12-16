@@ -1,0 +1,30 @@
+{
+  "name": "cask-angular-promptable",
+  "main": [
+    "module.js",
+    "prompt.js",
+    "tpl.html.js"
+  ],
+  "version": "0.0.2",
+  "description": "Ideally a stylized window.prompt",
+  "keywords": [
+    "promptable",
+    "form",
+    "window.prompt",
+    "cask",
+    "angular-directive"
+  ],
+  "license": "Apache License, Version 2.0",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.x",
+    "angular-strap": "2.x"
+  }
+}
