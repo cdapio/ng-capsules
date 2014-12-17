@@ -5,7 +5,7 @@
     "prompt.js",
     "tpl.html.js"
   ],
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Ideally a stylized window.prompt",
   "keywords": [
     "promptable",
@@ -25,6 +25,7 @@
   ],
   "dependencies": {
     "angular": "1.x",
-    "angular-strap": "2.x"
+    "angular-strap": "2.x",
+    "cask-angular-focus": "https://github.com/caskdata/ng-capsules/blob/develop/zip/cask-angular-focus.zip?raw=true"
   }
 }
