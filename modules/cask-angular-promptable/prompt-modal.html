@@ -6,7 +6,10 @@
         <h4 class="modal-title" ng-bind="title"></h4>
       </div>
       <div class="modal-body">
-        <input type="text" class="form-control input-lg" ng-model="tempValue" />
+        <input type="text" 
+          class="form-control input-lg" 
+          ng-model="value"
+          cask-focus="caskPromptModal" />
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button>

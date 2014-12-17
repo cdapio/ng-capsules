@@ -5,43 +5,47 @@
  *  the specified binding will be set to the user input 
  *  from a modal dialog. Eg:
  *
- * <a ng-click="caskPrompt()"
- *       cask-promptable="model"
+ * <a ng-click="caskPrompt('new '+model.name)"
+ *       cask-promptable="model.name"
  *       data-prompt-title="Please enter a new name"
  * >rename</a>
  */
 
 angular.module('cask-angular-promptable').directive('caskPromptable',
-function caskPromptableDirective ($modal) {
+function caskPromptableDirective ($modal, caskFocusManager) {
   return {
     restrict: 'A',
-    scope: {
-      model: '=caskPromptable' 
-    },
     link: function (scope, element, attrs) {
 
-      scope.caskPrompt = function () {
+      var m = $modal({
+        template: 'cask-angular-promptable/prompt-modal.html',
+        placement: 'center',
+        show: false,
+        prefixEvent: 'cask-promptable-modal'
+      });
 
-        var modal, modalScope;
+      angular.extend(m.$scope, {
+        value: '',
+        title: attrs.promptTitle || 'Prompt',
+        setPromptable: function() {
+          scope.$eval(attrs.caskPromptable + ' = ' + angular.toJson(m.$scope.value));
+          m.hide();
+        }
+      });
 
-        modalScope = scope.$new(true);
+      scope.$on('$destroy', function() {
+        m.destroy();
+      });
 
-        modalScope.setPromptable = function() {
-          scope.model = modalScope.tempValue;
-          modal.hide();
-        };
+      m.$scope.$on('show', function() {
+        caskFocusManager.select('caskPromptModal');
+      });
 
-        modalScope.tempValue = attrs.promptPrefill ? angular.copy(scope.model) : '';
-
-        modalScope.title = attrs.promptTitle || 'Prompt';
-
-        modal = $modal({
-          scope: modalScope,
-          template: 'cask-angular-promptable/prompt-modal.html',
-          placement: 'center',
-          show: true
-        });
-
+      scope.caskPrompt = function (v) {
+        if(!angular.isUndefined(v)) {
+          m.$scope.value = v;
+        }
+        m.show();
       };
 
     }
