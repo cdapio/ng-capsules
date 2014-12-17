@@ -6,7 +6,7 @@
  *  from a modal dialog. Eg:
  *
  * <a ng-click="caskPrompt('Please enter a new name', 'new '+model.name)"
- *       cask-promptable="model.name"
+ *       cask-promptable="model.name = $value"
  * >rename</a>
  */
 
@@ -26,8 +26,10 @@ function caskPromptableDirective ($modal, caskFocusManager) {
       angular.extend(m.$scope, {
         value: '',
         title: 'Prompt',
-        setPromptable: function() {
-          scope.$eval(attrs.caskPromptable + ' = ' + angular.toJson(m.$scope.value));
+        evalPromptable: function() {
+          scope.$evalAsync(attrs.caskPromptable, {
+            '$value': m.$scope.value
+          });
           m.hide();
         }
       });
