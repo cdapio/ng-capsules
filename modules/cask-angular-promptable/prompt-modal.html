@@ -1,0 +1,20 @@
+<div class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <form class="modal-content" ng-submit="evalPromptable()">
+      <div class="modal-header" ng-show="title">
+        <button type="button" class="close" ng-click="$hide()">&times;</button>
+        <h4 class="modal-title" ng-bind="title"></h4>
+      </div>
+      <div class="modal-body">
+        <input type="text" 
+          class="form-control input-lg" 
+          ng-model="value"
+          cask-focus="caskPromptModal" />
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" ng-click="$hide()">Cancel</button>
+        <button type="submit" class="btn btn-primary">OK</button>
+      </div>
+    </form>
+  </div>
+</div>
