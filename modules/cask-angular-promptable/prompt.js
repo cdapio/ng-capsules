@@ -27,7 +27,7 @@ function caskPromptableDirective ($modal, caskFocusManager) {
         value: '',
         title: 'Prompt',
         evalPromptable: function() {
-          scope.$evalAsync(attrs.caskPromptable, {
+          scope.$eval(attrs.caskPromptable, {
             '$value': m.$scope.value
           });
           m.hide();
@@ -46,12 +46,8 @@ function caskPromptableDirective ($modal, caskFocusManager) {
         if(!angular.isUndefined(text)) {
           m.$scope.title = text;
         }
-
         if(!angular.isUndefined(prefill)) {
           m.$scope.value = prefill;
-        }
-        else {
-          m.$scope.value = scope.$eval(attrs.caskPromptable);
         }
         m.show();
       };

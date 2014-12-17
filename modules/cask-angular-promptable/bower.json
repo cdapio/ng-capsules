@@ -5,7 +5,7 @@
     "prompt.js",
     "tpl.html.js"
   ],
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Ideally a stylized window.prompt",
   "keywords": [
     "promptable",
