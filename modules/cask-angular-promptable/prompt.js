@@ -34,9 +34,9 @@ function caskPromptableDirective ($modal, caskFocusManager) {
         }
       });
 
-      // scope.$on('$destroy', function() {
-      //   m.destroy();
-      // });
+      scope.$on('$destroy', function() {
+        m.destroy();
+      });
 
       m.$scope.$on('cask-promptable-modal.show', function() {
         caskFocusManager.select('caskPromptModal');
