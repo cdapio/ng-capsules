@@ -1,6 +1,6 @@
 /*global module, expect, inject, describe, it, before, beforeEach, after, afterEach */
 
-describe('directive caskProgress', function() {
+describe('Unit test for cask-progress directive', function() {
   beforeEach(module('cask-angular-progress'));
 
   var $compile, scope;

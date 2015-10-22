@@ -18,7 +18,8 @@ module.exports = function(config) {
     browsers: ['Chrome'],
     plugins : [
       'karma-chrome-launcher',
-      'karma-jasmine'
+      'karma-jasmine',
+      'karma-mocha-reporter'
     ],
     customLaunchers: {
       Chrome_travis_ci: {
@@ -26,7 +27,7 @@ module.exports = function(config) {
         flags: ['--no-sandbox']
       }
     },
-    reporters: ['progress']
+    reporters: ['mocha']
   };
 
   if(process.env.TRAVIS){
