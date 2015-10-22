@@ -16,6 +16,7 @@ function tplCache(item) {
   });
 }
 
+// gulp zip --module=cask-angular-eventpipe
 gulp.task('zip', function () {
   var output = merge(),
       inputModule = argv.module,
