@@ -1,6 +1,7 @@
 {
   "name": "cask-angular-eventpipe",
   "main": [
+    "module.js",
     "eventpipe.js"
   ],
   "version": "0.0.1",
