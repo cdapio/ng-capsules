@@ -1,0 +1,26 @@
+{
+  "name": "cask-angular-eventpipe",
+  "main": [
+    "eventpipe.js"
+  ],
+  "version": "0.0.1",
+  "description": "A service that provides pub-sub mechanism. An alternative to $broadcast or $emit (avoid going through the entire scope hirerachy)",
+  "keywords": [
+    "pub-sub",
+    "$broadcast",
+    "$emit",
+    "angular-service"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.x"
+  }
+}
