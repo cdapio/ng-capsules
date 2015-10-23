@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     del = require('del'),
     merge = require('merge-stream'),
     jshint = require('gulp-jshint'),
-    karma = require('karma').server,
+    karma = require('karma').Server,
     argv = require('yargs').argv,
     path = require('path');
 
@@ -77,7 +77,7 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('test', ['jshint'], function(done) {
-  karma.start({
+  new karma({
     configFile: __dirname + '/test/karma-conf.js'
-  }, done);
+  }, done).start();
 });
