@@ -1,0 +1,33 @@
+{
+  "name": "cask-angular-socket-datasource",
+  "main": [
+    "module.js",
+    "socket.js",
+    "datasource.js"
+  ],
+  "version": "0.0.1",
+  "description": "A provider that is used to setup socket connection and seemlesly communicate between backend and different controllers in different modules.",
+  "keywords": [ 
+    "Sockets",
+    "SOCKJS",
+    "DataSource",
+    "angular-service"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.x",
+    "cask-angular-observable-promise": "https://github.com/caskdata/ng-capsules/raw/develop/zip/cask-angular-observable-promise.zip",
+    "cask-angular-eventpipe": "https://github.com/caskdata/ng-capsules/raw/develop/zip/cask-angular-eventpipe.zip",
+    "cask-angular-window-manager": "https://github.com/caskdata/ng-capsules/raw/develop/zip/cask-angular-window-manager.zip",
+    "sockjs-client": "1.0.2",
+    "node-uuid": "1.4.3"
+  }
+}
