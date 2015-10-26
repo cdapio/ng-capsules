@@ -69,7 +69,8 @@ gulp.task('test-build', function(cb) {
 
 gulp.task('jshint', function() {
   return gulp.src([
-    './modules/**/*.js'
+    './modules/**/*.js',
+    '!./modules/**/bower_components/**/*.js'
     ])
     .pipe(jshint())
     .pipe(jshint.reporter())
