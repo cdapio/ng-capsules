@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     karma = require('karma').Server,
     argv = require('yargs').argv,
+    install = require('gulp-install'),
     path = require('path');
 
 
@@ -55,6 +56,9 @@ gulp.task('clean', function(cb) {
 gulp.task('test-build', function(cb) {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function(item) {
+    gulp.src('./modules/'+ item + '/bower.json')
+      .pipe(install());
+
     gulp.src([
       './modules/' + item + '/**/*.html'
     ])
