@@ -5,7 +5,8 @@ module.exports = function(config) {
       '../bower_components/angular/angular.js',
       '../bower_components/angular-mocks/angular-mocks.js',
       '../bower_components/jquery/dist/jquery.js',
-
+      '../modules/cask-angular-socket-datasource/bower_components/sockjs-client/dist/sockjs.js',
+      '../modules/cask-angular-socket-datasource/bower_components/node-uuid/uuid.js',
 
       '*/module.js',
       '**/test/templates/tpl.html.js',
