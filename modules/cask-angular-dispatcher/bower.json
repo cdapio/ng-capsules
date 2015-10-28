@@ -1,0 +1,26 @@
+{
+  "name": "cask-angular-dispatcher",
+  "main": [
+    "module.js",
+    "dispatcher.js"
+  ],
+  "version": "0.0.1",
+  "description": "Dispatcher is a factory version of EventPipe. This is an instantiable pub-sub factory that can be used in 'flux'y way to communicate between actions and store",
+  "keywords": [
+    "pub-sub",
+    "angular-factory"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.x",
+    "node-uuid": "1.4.3"
+  }
+}

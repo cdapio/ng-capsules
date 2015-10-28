@@ -53,12 +53,14 @@ gulp.task('clean', function(cb) {
   del(['zip/*'], cb);
 });
 
-gulp.task('test-build', function(cb) {
+gulp.task('bower-install', function(cb) {
+  return gulp.src(['./modules/*/bower.json'])
+    .pipe(install());
+});
+
+gulp.task('test-build', ['bower-install'], function(cb) {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function(item) {
-    gulp.src('./modules/'+ item + '/bower.json')
-      .pipe(install());
-
     gulp.src([
       './modules/' + item + '/**/*.html'
     ])
@@ -81,7 +83,7 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', ['jshint'], function(done) {
+gulp.task('test', ['test-build', 'jshint'], function(done) {
   new karma({
     configFile: __dirname + '/test/karma-conf.js'
   }, done).start();
