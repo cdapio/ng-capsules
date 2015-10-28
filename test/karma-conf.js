@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
- 
+
 module.exports = function(config) {
   var karma = {
     basePath: '../modules/',
@@ -25,7 +25,7 @@ module.exports = function(config) {
       '../modules/cask-angular-socket-datasource/bower_components/node-uuid/uuid.js',
 
       '*/module.js',
-      '**/test/templates/tpl.html.js',
+      '*/test/templates/tpl.html.js',
       '*/*.js',
       '*/test/*.js'
     ],
