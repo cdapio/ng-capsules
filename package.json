@@ -7,7 +7,7 @@
     "test": "gulp test"
   },
   "author": "Cask Data http://cask.co",
-  "license": "ISC",
+  "license": "Apache License, Version 2.0",
   "devDependencies": {
     "bower": "^1.3.12",
     "del": "^0.1.3",

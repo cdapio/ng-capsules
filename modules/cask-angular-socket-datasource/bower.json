@@ -7,13 +7,13 @@
   ],
   "version": "0.0.1",
   "description": "A provider that is used to setup socket connection and seemlesly communicate between backend and different controllers in different modules.",
-  "keywords": [ 
+  "keywords": [
     "Sockets",
     "SOCKJS",
     "DataSource",
     "angular-service"
   ],
-  "license": "MIT",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",

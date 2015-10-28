@@ -16,7 +16,7 @@
     "angular": "1.x",
     "cask-angular-focus": "https://github.com/caskdata/ng-capsules/blob/develop/zip/cask-angular-focus.zip?raw=true"
   },
-  "license": "MIT",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",

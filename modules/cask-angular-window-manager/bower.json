@@ -13,7 +13,7 @@
     "angular-directive",
     "angular-service"
   ],
-  "license": "MIT",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",
