@@ -10,7 +10,7 @@
     "pub-sub",
     "angular-factory"
   ],
-  "license": "MIT",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",

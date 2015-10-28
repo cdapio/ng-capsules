@@ -1,3 +1,19 @@
+/*
+ * Copyright © 2015 Cask Data, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ * use this file except in compliance with the License. You may obtain a copy of
+ * the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations under
+ * the License.
+ */
+
 var gulp = require('gulp'),
     gulpPlugin = require('gulp-load-plugins')(),
     fs = require('fs'),
@@ -38,6 +54,7 @@ gulp.task('zip', function () {
       .pipe(
         gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
       )
+      .pipe(gulpPlugin.minifyHtml({loose: true, quotes: true}))
       .pipe(
         gulpPlugin.if('*.html', tplCache(item))
       )
@@ -64,6 +81,7 @@ gulp.task('test-build', ['bower-install'], function(cb) {
     gulp.src([
       './modules/' + item + '/**/*.html'
     ])
+    .pipe(gulpPlugin.minifyHtml({loose: true, quotes: true}))
     .pipe(gulpPlugin.angularTemplatecache('tpl.html.js', {
       module: item,
       root: item + '/'
@@ -83,7 +101,7 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', ['test-build', 'jshint'], function(done) {
+gulp.task('test', ['jshint'], function(done) {
   new karma({
     configFile: __dirname + '/test/karma-conf.js'
   }, done).start();

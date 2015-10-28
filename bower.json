@@ -5,7 +5,7 @@
     "Hodor!"
   ],
   "description": "This is the bower build component for hosting all cask-modules as zipped bower components",
-  "license": "MIT",
+  "license": "Apache License, Version 2.0",
   "private": true,
   "ignore": [
     "**/.*",
