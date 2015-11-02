@@ -153,10 +153,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
                 $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.response}));
               }
             }
-            return; // errors are handled at $rootScope level
-          }
-
-          if (self.bindings[hash]) {
+          } else if (self.bindings[hash]) {
             if (self.bindings[hash].callback) {
               data.response = data.response || {};
               data.response.__pollId__ = hash;
@@ -164,10 +161,15 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
             } else if (self.bindings[hash].resolve) {
               // https://github.com/angular/angular.js/wiki/When-to-use-$scope.$apply%28%29
               scope.$apply(self.bindings[hash].resolve.bind(null, {data: data.response, id: hash}));
-              return;
             }
           }
-
+          // We can remove the entry from the self bindings if its not a poll.
+          // Is not going to be used for anything else.
+          var isPoll = self.bindings[hash].poll;
+          if (!isPoll) {
+            delete self.bindings[hash];
+          }
+          return;
         });
 
         scope.$on('$destroy', function () {
