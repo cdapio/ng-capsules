@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
- 
+
 describe('Unit test for MyDataSource + MySocket', function() {
   var MySocket,
       EventPipe1,
@@ -45,9 +45,6 @@ describe('Unit test for MyDataSource + MySocket', function() {
 
         spyOn(MySocket, 'send').andCallFake(function(re) {
           resourceId = re.resource.id;
-          if (re.poll) {
-
-          }
           return re.resource.url;
         });
         spyOn(MySocket, 'close').andCallFake(function() {
@@ -170,5 +167,86 @@ describe('Unit test for MyDataSource + MySocket', function() {
         $timeout.flush();
     });
 
+  });
+  describe('Request - Must be onetime', function() {
+    it('Remove request entry from map once request is complete', function() {
+      dataSrc.request({
+        url: url
+      })
+        .then(
+          function success(res) {
+            expect(res.data).toBe(url);
+          }
+        );
+
+      EventPipe1.emit(MYSOCKET_EVENT1.message, {
+        resource: {
+          id: resourceId
+        },
+        response: {
+          data: url
+        }
+      });
+      $timeout(function() {
+        var internalBindings = Object.keys(dataSrc.bindings).length;
+        expect(internalBindings).toBe(0);
+      });
+      $timeout.flush();
+    });
+
+    it('Should not remove a polling entry once a request is received', function() {
+      dataSrc.request({
+        url: url
+      })
+        .then(
+          function success(res) {
+            expect(res.data).toBe(url);
+          }
+        );
+
+      EventPipe1.emit(MYSOCKET_EVENT1.message, {
+        resource: {
+          id: resourceId
+        },
+        response: {
+          data: url
+        }
+      });
+
+      dataSrc.poll({
+        url: url
+      })
+        .then(
+          function success(res) {
+          },
+          function error(){
+            if (res.data.j === 10) {
+              expect(res.data.message).toBe('ERROR');
+              expect(res.data.j).toBe(10);
+            }
+          }
+        );
+
+      $timeout(function() {
+        var j;
+        for (j=0; j<=10; j++) {
+          EventPipe1.emit(MYSOCKET_EVENT1.message, {
+            resource: {
+              id: resourceId
+            },
+            response: {
+              data: {
+                message: 'ERROR',
+                j: j
+              }
+            },
+            statusCode: 500
+          });
+        }
+        var internalBindings = Object.keys(dataSrc.bindings).length;
+        expect(internalBindings).toBe(1);
+      });
+      $timeout.flush();
+    });
   });
 });
