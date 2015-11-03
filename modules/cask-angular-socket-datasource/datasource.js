@@ -143,6 +143,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
 
         EventPipe.on(MYSOCKET_EVENT.message, function (data) {
           var hash;
+          var isPoll;
           hash = data.resource.id;
 
           if(data.statusCode>299 || data.warning) {
@@ -162,12 +163,12 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
               // https://github.com/angular/angular.js/wiki/When-to-use-$scope.$apply%28%29
               scope.$apply(self.bindings[hash].resolve.bind(null, {data: data.response, id: hash}));
             }
-          }
-          // We can remove the entry from the self bindings if its not a poll.
-          // Is not going to be used for anything else.
-          var isPoll = self.bindings[hash].poll;
-          if (!isPoll) {
-            delete self.bindings[hash];
+            // We can remove the entry from the self bindings if its not a poll.
+            // Is not going to be used for anything else.
+            isPoll = self.bindings[hash].poll;
+            if (!isPoll) {
+              delete self.bindings[hash];
+            }
           }
           return;
         });

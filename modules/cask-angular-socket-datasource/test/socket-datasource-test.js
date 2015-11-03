@@ -218,12 +218,12 @@ describe('Unit test for MyDataSource + MySocket', function() {
       })
         .then(
           function success(res) {
-          },
-          function error(){
             if (res.data.j === 10) {
-              expect(res.data.message).toBe('ERROR');
+              expect(res.data.url).toBe(url);
               expect(res.data.j).toBe(10);
             }
+          },
+          function error(){
           }
         );
 
@@ -236,11 +236,11 @@ describe('Unit test for MyDataSource + MySocket', function() {
             },
             response: {
               data: {
-                message: 'ERROR',
+                url: url,
                 j: j
               }
             },
-            statusCode: 500
+            statusCode: 200
           });
         }
         var internalBindings = Object.keys(dataSrc.bindings).length;
