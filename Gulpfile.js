@@ -54,7 +54,7 @@ gulp.task('zip', function () {
       .pipe(
         gulpPlugin.if('*.js', gulpPlugin.ngAnnotate())
       )
-      .pipe(gulpPlugin.minifyHtml({loose: true, quotes: true}))
+      .pipe(gulpPlugin.if('*.html', gulpPlugin.minifyHtml({loose: true, quotes: true})))
       .pipe(
         gulpPlugin.if('*.html', tplCache(item))
       )
