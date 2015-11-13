@@ -248,5 +248,39 @@ describe('Unit test for MyDataSource + MySocket', function() {
       });
       $timeout.flush();
     });
+
+    it('Should remove a polling entry if I call stopPoll from inside the callback', function() {
+      dataSrc.poll({
+        url: url
+      })
+        .then(
+          function success() {
+            dataSrc.stopPoll(resourceId);
+          },
+          function error(){
+          }
+        );
+
+      $timeout(function() {
+        var j;
+        for (j=0; j<=10; j++) {
+          EventPipe1.emit(MYSOCKET_EVENT1.message, {
+            resource: {
+              id: resourceId
+            },
+            response: {
+              data: {
+                url: url,
+                j: j
+              }
+            },
+            statusCode: 200
+          });
+        }
+        var internalBindings = Object.keys(dataSrc.bindings).length;
+        expect(internalBindings).toBe(0);
+      });
+      $timeout.flush();
+    });
   });
 });

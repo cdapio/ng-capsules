@@ -163,10 +163,20 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
               // https://github.com/angular/angular.js/wiki/When-to-use-$scope.$apply%28%29
               scope.$apply(self.bindings[hash].resolve.bind(null, {data: data.response, id: hash}));
             }
-            // We can remove the entry from the self bindings if its not a poll.
-            // Is not going to be used for anything else.
+            /*
+              At first glance this condition check might be redundant with line 157,
+              however in the resolve or callback function if the user initiates a stop-poll call then
+              the execution goes to stopPoll function in line 264 and there we delete the entry from bindings
+              as we no longer need it. After the stopPoll request has gone out the execution continues back
+              here and we can do self.bindings[hash].poll as self.bindings[hash] is already deleted in stopPoll.
+            */
+            if (!self.bindings[hash]) {
+              return;
+            }
             isPoll = self.bindings[hash].poll;
             if (!isPoll) {
+              // We can remove the entry from the self bindings if its not a poll.
+              // Is not going to be used for anything else.
               delete self.bindings[hash];
             }
           }
