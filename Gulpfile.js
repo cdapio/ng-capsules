@@ -75,7 +75,7 @@ gulp.task('bower-install', function(cb) {
     .pipe(install());
 });
 
-gulp.task('test-build', ['bower-install'], function(cb) {
+gulp.task('test-build', function(cb) {
   var modules = fs.readdirSync('./modules/');
   modules.forEach(function(item) {
     gulp.src([
