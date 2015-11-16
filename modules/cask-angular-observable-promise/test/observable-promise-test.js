@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
- 
+
 describe('Unit test for MyPromise factory', function() {
   beforeEach(module('cask-angular-observable-promise'));
 
@@ -103,4 +103,16 @@ describe('Unit test for MyPromise factory', function() {
     $timeout.flush();
   });
 
+  it('Should handle exceptions and should call reject appropriately', function() {
+    prom = new Mypromise(function (resolve, reject) {
+      throw "Error 1";
+    });
+
+    prom.then(
+      function success() {},
+      function error(rejectedValue) {
+        expect(rejectedValue).toBe("Error 1");
+      }
+    );
+  });
 });

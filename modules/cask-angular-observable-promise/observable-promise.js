@@ -82,11 +82,6 @@ angular.module('cask-angular-observable-promise')
           }
           fulfill(result);
         } catch (ex) {
-          if (console.error) {
-            console.error(ex);
-          } else {
-            console.log(ex);
-          }
           reject(ex);
         }
       }
@@ -126,11 +121,6 @@ angular.module('cask-angular-observable-promise')
               try {
                 return resolve(onFulfilled(result));
               } catch (ex) {
-                if (console.error) {
-                  console.error(ex);
-                } else {
-                  console.log(ex);
-                }
                 return reject(ex);
               }
             } else {
@@ -141,19 +131,9 @@ angular.module('cask-angular-observable-promise')
               try {
                 return resolve(onRejected(error));
               } catch (ex) {
-                if (console.error) {
-                  console.error(ex);
-                } else {
-                  console.log(ex);
-                }
                 return reject(ex);
               }
             } else {
-              if (console.error) {
-                console.error(error);
-              } else {
-                console.log(error);
-              }
               return reject(error);
             }
           });
@@ -204,11 +184,6 @@ angular.module('cask-angular-observable-promise')
             onRejected(reason);
           });
         } catch (ex) {
-          if (console.error) {
-            console.error(ex);
-          } else {
-            console.log(ex);
-          }
           if (done) {
             return;
           }
