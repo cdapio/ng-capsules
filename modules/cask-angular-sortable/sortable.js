@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
- 
+
 /**
  * caskSortable
  * makes a <table> sortable
@@ -40,7 +40,8 @@ function caskSortableDirective ($log) {
 
       var headers = element.find('th'),
           defaultPredicate,
-          defaultReverse;
+          defaultReverse,
+          noInitialSort = attrs.noInitialSort;
 
       angular.forEach(headers, function(th) {
         th = angular.element(th);
@@ -56,9 +57,14 @@ function caskSortableDirective ($log) {
       }
 
       scope.sortable = {
-        predicate: getPredicate(defaultPredicate.addClass('predicate')),
         reverse: defaultReverse
       };
+
+      if (noInitialSort) {
+        scope.sortable.predicate = null;
+      } else {
+        scope.sortable.predicate = getPredicate(defaultPredicate.addClass('predicate'));
+      }
 
       headers.append('<i class="fa fa-toggle-down"></i>');
 
