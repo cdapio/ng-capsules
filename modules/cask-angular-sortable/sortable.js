@@ -41,7 +41,9 @@ function caskSortableDirective ($log) {
       var headers = element.find('th'),
           defaultPredicate,
           defaultReverse,
-          noInitialSort = attrs.noInitialSort;
+          noInitialSort;
+
+      noInitialSort = (attrs.noInitialSort === 'true'? true: false);
 
       angular.forEach(headers, function(th) {
         th = angular.element(th);
