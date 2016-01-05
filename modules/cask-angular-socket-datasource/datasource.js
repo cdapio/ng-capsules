@@ -276,6 +276,8 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
         if (match) {
           resource = match.resource;
           _pollStop(resource);
+          // We should probably be doing this once we get a confirmation from cdap node proxy server.
+          // Deleting the entry from this.bindings is wrong here if the stop poll fails for some god forsaken reason.
           delete this.bindings[resourceId];
           defer.resolve({});
         } else {
@@ -288,7 +290,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
        * Fetch a template configuration on-demand. Send the action
        * 'template-config' to the node backend.
        */
-      DataSource.prototype.config = function (resource, cb) {
+      DataSource.prototype.config = function (resource, cb, errorCb) {
         var deferred = $q.defer();
 
         resource.suppressErrors = true;
@@ -297,11 +299,14 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
           resource: resource,
           callback: function (result) {
             if (cb) {
-              cb.apply(this, arguments);
+              cb.apply(null, result);
             }
             deferred.resolve(result);
           },
           errorCallback: function(err) {
+            if (errorCb) {
+              errorCb.apply(null, err);
+            }
             deferred.reject(err);
           }
         };
@@ -317,7 +322,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
        * Fetch a resource on-demand. Send the action 'request' to
        * the node backend.
        */
-      DataSource.prototype.request = function (resource, cb) {
+      DataSource.prototype.request = function (resource, cb, errorCb) {
         var self = this;
         var promise = new MyPromise(function(resolve, reject) {
 
@@ -344,6 +349,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
           generatedResource.id = uuid.v4();
           self.bindings[generatedResource.id] = {
             callback: cb,
+            errorCallback: errorCb,
             resource: generatedResource,
             resolve: resolve,
             reject: reject
