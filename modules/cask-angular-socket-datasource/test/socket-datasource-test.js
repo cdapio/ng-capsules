@@ -57,7 +57,7 @@ describe('Unit test for MyDataSource + MySocket', function() {
   });
 
   describe('Request - Success:Failure cases', function() {
-    it ('Success case - 200 OK from backend', function () {
+    it ('Success case - 200 OK from backend (Promise version)', function () {
       dataSrc.request({
         url: url
       })
@@ -77,7 +77,7 @@ describe('Unit test for MyDataSource + MySocket', function() {
       });
     });
 
-    it('Failure case - 500 Internal server error from backend', function() {
+    it('Failure case - 500 Internal server error from backend (Promise version)', function() {
       dataSrc.request({
         url: url
       })
@@ -98,10 +98,47 @@ describe('Unit test for MyDataSource + MySocket', function() {
           statusCode: 500
         });
     });
-  });
-  describe('Poll - Success:Failre cases', function() {
 
-    it('Success case - 200 OK from backend', function () {
+    it ('Success case - 200 OK from backend (Callback version)', function () {
+      dataSrc.request({
+        url: url
+      }, function success(res) {
+          expect(res.data).toBe(url);
+        }
+      );
+
+      EventPipe1.emit(MYSOCKET_EVENT1.message, {
+        resource: {
+          id: resourceId
+        },
+        response: {
+          data: url
+        }
+      });
+    });
+
+    it('Failure case - 500 Internal server error from backend (Callback version)', function() {
+      dataSrc.request({
+        url: url
+      }, function success() {},
+        function error(err) {
+          expect(err).toBe('ERROR');
+        }
+      );
+
+        EventPipe1.emit(MYSOCKET_EVENT1.message, {
+          resource: {
+            id: resourceId
+          },
+          response: 'ERROR',
+          statusCode: 500
+        });
+    });
+
+  });
+  describe('Poll - Success:Failure cases', function() {
+
+    it('Success case - 200 OK from backend (Promise version)', function () {
       dataSrc.poll({
         url: url
       })
@@ -133,17 +170,16 @@ describe('Unit test for MyDataSource + MySocket', function() {
         $timeout.flush();
     });
 
-    it('Failure case - 500 Internal server error from backend', function () {
+    it('Failure case - 500 Internal server error from backend (Promise version)', function () {
       dataSrc.poll({
         url: url
       })
         .then(
-          function success(res) {
-          },
-          function error(){
-            if (res.data.j === 10) {
-              expect(res.data.message).toBe('ERROR');
-              expect(res.data.j).toBe(10);
+          function success() {},
+          function error(err){
+            if (err.data.j === 10) {
+              expect(err.data.message).toBe('ERROR');
+              expect(err.data.j).toBe(10);
             }
           }
         );
@@ -167,6 +203,66 @@ describe('Unit test for MyDataSource + MySocket', function() {
         $timeout.flush();
     });
 
+    it('Success case - 200 OK from backend (Callback version)', function () {
+      dataSrc.poll({
+        url: url
+      }, function success(res) {
+          if (res.data.j === 10) {
+            expect(res.data.url).toBe(url);
+            expect(res.data.j).toBe(10);
+          }
+        },
+        function error(){}
+      );
+      $timeout(function() {
+        var j;
+        for (j=0; j<=10; j++) {
+          EventPipe1.emit(MYSOCKET_EVENT1.message, {
+            resource: {
+              id: resourceId
+            },
+            response: {
+              data: {
+                url: url,
+                j: j
+              }
+            }
+          });
+        }
+      });
+      $timeout.flush();
+    });
+
+    it('Failure case - 500 Internal server error from backend (Callback version)', function () {
+      dataSrc.poll({
+        url: url
+      }, function success() {},
+        function error(err){
+          if (err.data.j === 10) {
+            expect(err.data.message).toBe('ERROR');
+            expect(err.data.j).toBe(10);
+          }
+        }
+      );
+      $timeout(function() {
+        var j;
+        for (j=0; j<=10; j++) {
+          EventPipe1.emit(MYSOCKET_EVENT1.message, {
+            resource: {
+              id: resourceId
+            },
+            response: {
+              data: {
+                message: 'ERROR',
+                j: j
+              }
+            },
+            statusCode: 500
+          });
+        }
+      });
+      $timeout.flush();
+    });
   });
   describe('Request - Must be onetime', function() {
     it('Remove request entry from map once request is complete', function() {
