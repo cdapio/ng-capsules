@@ -75,7 +75,8 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
             id: resource.id,
             url: resource.url,
             json: resource.json,
-            method: resource.method
+            method: resource.method,
+            suppressErrors: resource.suppressErrors || false
           };
           if (resource.interval) {
             re.interval = resource.interval;
@@ -108,7 +109,8 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
             id: resource.id,
             url: resource.url,
             json: resource.json,
-            method: resource.method
+            method: resource.method,
+            suppressErrors: resource.suppressErrors || false
           };
         }
         if (resource.header) {
@@ -149,9 +151,9 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
           if(data.statusCode>299 || data.warning) {
             if (self.bindings[hash]) {
               if(self.bindings[hash].errorCallback) {
-                $rootScope.$apply(self.bindings[hash].errorCallback.bind(null, data.response));
+                $rootScope.$apply(self.bindings[hash].errorCallback.bind(null, data.error || data.response));
               } else if (self.bindings[hash].reject) {
-                $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.response}));
+                $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.error || data.response}));
               }
             }
           } else if (self.bindings[hash]) {
@@ -225,7 +227,8 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
             json: resource.json,
             interval: resource.interval || (resource.options &&  resource.options.interval) || $rootScope.defaultPollInterval,
             body: resource.body,
-            method: resource.method || 'GET'
+            method: resource.method || 'GET',
+            suppressErrors: resource.suppressErrors || false
           };
 
           if (resource.headers) {
@@ -328,7 +331,8 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
 
           var generatedResource = {
             json: resource.json,
-            method: resource.method || 'GET'
+            method: resource.method || 'GET',
+            suppressErrors: resource.suppressErrors || false
           };
           if (resource.body) {
             generatedResource.body = resource.body;
