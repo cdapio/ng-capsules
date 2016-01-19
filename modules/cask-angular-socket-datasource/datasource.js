@@ -149,9 +149,9 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
           if(data.statusCode>299 || data.warning) {
             if (self.bindings[hash]) {
               if(self.bindings[hash].errorCallback) {
-                $rootScope.$apply(self.bindings[hash].errorCallback.bind(null, data.response));
+                $rootScope.$apply(self.bindings[hash].errorCallback.bind(null, data.error || data.response));
               } else if (self.bindings[hash].reject) {
-                $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.response}));
+                $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.error || data.response}));
               }
             }
           } else if (self.bindings[hash]) {
