@@ -151,7 +151,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
           if(data.statusCode>299 || data.warning) {
             if (self.bindings[hash]) {
               if(self.bindings[hash].errorCallback) {
-                $rootScope.$apply(self.bindings[hash].errorCallback.bind(null, data.error || data.response, data.statusCode));
+                $rootScope.$apply(self.bindings[hash].errorCallback.bind(null, data.error || data.response));
               } else if (self.bindings[hash].reject) {
                 $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.error || data.response, statusCode: data.statusCode }));
               }
@@ -160,7 +160,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
             if (self.bindings[hash].callback) {
               data.response = data.response || {};
               data.response.__pollId__ = hash;
-              scope.$apply(self.bindings[hash].callback.bind(null, data.response, data.statusCode));
+              scope.$apply(self.bindings[hash].callback.bind(null, data.response));
             } else if (self.bindings[hash].resolve) {
               // https://github.com/angular/angular.js/wiki/When-to-use-$scope.$apply%28%29
               scope.$apply(self.bindings[hash].resolve.bind(null, {data: data.response, id: hash, statusCode: data.statusCode }));
