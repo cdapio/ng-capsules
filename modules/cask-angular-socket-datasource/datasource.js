@@ -153,7 +153,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
               if(self.bindings[hash].errorCallback) {
                 $rootScope.$apply(self.bindings[hash].errorCallback.bind(null, data.error || data.response));
               } else if (self.bindings[hash].reject) {
-                $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.error || data.response}));
+                $rootScope.$apply(self.bindings[hash].reject.bind(null, {data: data.error || data.response, statusCode: data.statusCode }));
               }
             }
           } else if (self.bindings[hash]) {
@@ -163,7 +163,7 @@ var socketDataSource = angular.module('cask-angular-socket-datasource');
               scope.$apply(self.bindings[hash].callback.bind(null, data.response));
             } else if (self.bindings[hash].resolve) {
               // https://github.com/angular/angular.js/wiki/When-to-use-$scope.$apply%28%29
-              scope.$apply(self.bindings[hash].resolve.bind(null, {data: data.response, id: hash}));
+              scope.$apply(self.bindings[hash].resolve.bind(null, {data: data.response, id: hash, statusCode: data.statusCode }));
             }
             /*
               At first glance this condition check might be redundant with line 157,

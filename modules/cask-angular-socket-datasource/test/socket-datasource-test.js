@@ -87,6 +87,7 @@ describe('Unit test for MyDataSource + MySocket', function() {
           },
           function error(err) {
             expect(err.data).toBe('ERROR');
+            expect(err.statusCode).toBe(500);
           }
         );
 
@@ -179,6 +180,7 @@ describe('Unit test for MyDataSource + MySocket', function() {
           function error(err){
             if (err.data.j === 10) {
               expect(err.data.message).toBe('ERROR');
+              expect(err.statusCode).toBe(500);
               expect(err.data.j).toBe(10);
             }
           }
