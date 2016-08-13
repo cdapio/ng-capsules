@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015 Cask Data, Inc.
+ * Copyright © 2015-2016 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
- 
+
 /**
  * caskConfirmable
  *
@@ -29,7 +29,7 @@
  */
 
 angular.module('cask-angular-confirmable').directive('caskConfirmable',
-function caskConfirmableDirective ($modal) {
+function caskConfirmableDirective ($modal, $sce) {
   return {
     restrict: 'A',
     link: function (scope, element, attrs) {
@@ -44,12 +44,12 @@ function caskConfirmableDirective ($modal) {
           modal.hide();
           scope.$eval(attrs.caskConfirmable);
         };
-
+        var confirmableContent = $sce.getTrustedHtml(attrs.confirmableContent);
         modal = $modal({
           scope: modalScope,
           template: 'cask-angular-confirmable/confirm-modal.html',
           title: attrs.confirmableTitle || 'Confirmation',
-          content: attrs.confirmableContent || 'Are you sure?',
+          content: confirmableContent || 'Are you sure?',
           placement: 'center',
           show: true
         });
