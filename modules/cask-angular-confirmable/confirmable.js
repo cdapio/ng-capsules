@@ -40,6 +40,7 @@ function caskConfirmableDirective ($modal, $sce) {
 
         modalScope = scope.$new(true);
 
+        modalScope.customClass = attrs.confirmableModalClass || '';
         modalScope.doConfirm = function() {
           modal.hide();
           scope.$eval(attrs.caskConfirmable);
