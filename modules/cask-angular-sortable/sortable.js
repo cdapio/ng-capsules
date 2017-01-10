@@ -32,7 +32,7 @@
  */
 
 angular.module('cask-angular-sortable').directive('caskSortable',
-function caskSortableDirective ($log) {
+function caskSortableDirective ($log, $stateParams, $state) {
 
   return {
     restrict: 'A',
@@ -47,16 +47,29 @@ function caskSortableDirective ($log) {
 
       angular.forEach(headers, function(th) {
         th = angular.element(th);
-        var a = th.attr('data-predicate-default');
-        if(angular.isDefined(a)) {
+        var a;
+
+        if (!$stateParams.sortBy) {
+          a = th.attr('data-predicate-default');
+        }
+
+        if ($stateParams.sortBy && th.attr('data-predicate') === $stateParams.sortBy) {
+          defaultPredicate = th;
+          defaultReverse = ($stateParams.reverse==='reverse');
+        } else if (angular.isDefined(a)) {
           defaultPredicate = th;
           defaultReverse = (a==='reverse');
         }
       });
 
-      if(!defaultPredicate) {
+      if (!defaultPredicate) {
         defaultPredicate = headers.eq(0);
       }
+
+      $state.go($state.$current.name, {
+        sortBy:  defaultPredicate.attr('data-predicate'),
+        reverse: defaultReverse ? 'reverse' : ''
+      }, {notify: false});
 
       scope.sortable = {
         reverse: defaultReverse
@@ -74,8 +87,12 @@ function caskSortableDirective ($log) {
         var th = angular.element(this),
             predicate = getPredicate(th);
 
+        if (th.attr('skip-sort')){
+          return;
+        }
+
         scope.$apply(function() {
-          if(scope.sortable.predicate === predicate){
+          if (scope.sortable.predicate === predicate){
             scope.sortable.reverse = !scope.sortable.reverse;
             th.find('i').toggleClass('fa-flip-vertical');
           }
@@ -89,6 +106,11 @@ function caskSortableDirective ($log) {
             th.addClass('predicate');
           }
         });
+
+        $state.go($state.$current.name, {
+          sortBy:  predicate,
+          reverse: scope.sortable.reverse ? 'reverse' : ''
+        }, {notify: false});
       });
 
     }
