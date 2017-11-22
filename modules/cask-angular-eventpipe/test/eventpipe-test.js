@@ -1,5 +1,5 @@
 /*
- * Copyright © 2015 Cask Data, Inc.
+ * Copyright © 2015-2017 Cask Data, Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not
  * use this file except in compliance with the License. You may obtain a copy of
@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations under
  * the License.
  */
- 
+
 describe('Unit test for EventPipe service', function() {
   beforeEach(module('cask-angular-eventpipe'));
 
@@ -49,5 +49,26 @@ describe('Unit test for EventPipe service', function() {
     }
 
     expect(eventEmittedCount).toBe(5);
+  });
+
+  it('Should cancel a single callback in the callback array', function() {
+    var eventEmittedCount = 0;
+    var eventCb1 = Eventpipe.on('event3', function() {
+      eventEmittedCount += 1;
+    });
+    var eventCb2 = Eventpipe.on('event3', function() {
+      eventEmittedCount += 1;
+    });
+
+    Eventpipe.emit('event3');
+
+    expect(eventEmittedCount).toBe(2);
+
+    eventEmittedCount = 0;
+    eventCb1();
+
+    Eventpipe.emit('event3');
+
+    expect(eventEmittedCount).toBe(1);
   });
 });
